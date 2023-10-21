@@ -13,7 +13,7 @@ export const allNav = [
     title: 'Dashboard',
     icon: <AiFillDashboard />,
     role: 'admin',
-    path: '/'
+    path: '/admin/dasbord'
   },
   {
     id: 2,

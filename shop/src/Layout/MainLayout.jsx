@@ -11,7 +11,8 @@ function MainLayout() {
       <SideBar showSidebar={showSidebar} setShowsidebar={setShowsidebar} />
       <div className='ml-0 lg:ml-[260px] pt-[95px] transition-all'>
         <Outlet/>
-    </div>
+      </div>
+      
     </div>
     
   )
