@@ -63,5 +63,71 @@ export const allNav = [
     icon: <CiChat1 />,
     role: 'admin',
     path: '/admin/dashboard/chatseller'
+  },
+  
+  {
+    id: 9,
+    title: 'Dashboard',
+    icon: <AiFillDashboard />,
+    role: 'seller',
+    path: '/seller/dasbord'
+  },
+  {
+    id: 10,
+    title: 'All Products',
+    icon: <AiFillDashboard />,
+    role: 'seller',
+    path: '/seller/dasbord/all-product'
+  },
+  {
+    id: 11,
+    title: 'Add Products',
+    icon: <AiFillDashboard />,
+    role: 'seller',
+    path: '/seller/dasbord/add-product'
+  },
+  {
+    id: 12,
+    title: 'Discount Products',
+    icon: <AiFillDashboard />,
+    role: 'seller',
+    path: '/seller/dasbord/dis-count'
+  },
+  {
+    id: 13,
+    title: 'Order',
+    icon: <AiOutlineShopping />,
+    role: 'seller',
+    path: '/seller/dasbord/order'
+  },
+  {
+    id: 14,
+    title: 'payment',
+    icon: <BsCurrencyDollar />,
+    role: 'seller',
+    path: '/seller/dasbord/payment'
+  },
+   {
+    id: 15,
+    title: 'Customer Chart',
+    icon: <AiFillDashboard />,
+    role: 'seller',
+    path: '/seller/dasbord/customerChart'
+  },
+    {
+    id: 16,
+    title: 'Chart Support',
+    icon: <CiChat1 />,
+    role: 'seller',
+    path: '/seller/dasbordpayment/sellerChat'
+  },
+    {
+    id: 17,
+    title: 'Profile',
+    icon: <AiFillDashboard />,
+    role: 'seller',
+    path: '/seller/dasbordpayment/profile'
   }
+
+
 ];

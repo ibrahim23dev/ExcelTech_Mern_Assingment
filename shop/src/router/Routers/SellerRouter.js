@@ -1,11 +1,11 @@
 import { lazy } from "react";
 
-const Home = lazy(() => import('../../Views/Home'));
+const sellerDasbord = lazy(() => import('../../Views/seller/sellerDasbord'));
 
 export const SellerRoute= [
     {
         path:'/seller',
-        element: <Home />,
+        element: <sellerDasbord />,
        ability:['admin','seller']
     }
 ]

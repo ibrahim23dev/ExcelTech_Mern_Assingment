@@ -1,4 +1,4 @@
-import { lazy } from "react";
+import  React,{lazy} from "react";
 
 const AdminDasbord = lazy(() => import('../../Views/admin/adminDasbord'));
 const Order = lazy(() => import('../../Views/admin/Order'));
@@ -9,6 +9,10 @@ const ActiveSeller = lazy(() => import('../../Views/admin/activeSeller'));
 const DeactiveSeller = lazy(() => import('../../Views/admin/DeactiveSeller'));
 const SellerChart = lazy(() => import('../../Views/admin/ChartSeller'));
 const PaymentRequest = lazy(() => import('../../Views/admin/paymentRequest'));
+
+const SellerDetails = lazy(() => import('../../Views/admin/SellerDetails'));
+const BuyerDetails =lazy(() => import('../../Views/admin/buyerDetails'));
+
 
 
 
@@ -57,6 +61,16 @@ export const adminRoute= [
      {
         path: '/admin/dashboard/logout',
         element: <Logout/>,
+        ability: 'admin'
+    },
+     {
+        path: '/admin/dashboard/sellerDetails',
+        element: <SellerDetails/>,
+        ability: 'admin'
+    },
+     {
+        path: '/admin/dashboard/BuyerDetails',
+        element: <BuyerDetails/>,
         ability: 'admin'
     }
 ]

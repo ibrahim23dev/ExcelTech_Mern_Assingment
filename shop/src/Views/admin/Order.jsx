@@ -21,9 +21,9 @@ function Order() {
                   <input className='px-3 py-2 outline-none border bg-transparent border-slate-700 rounded-md text-[#d0d2d6] focus:border-indigo-500 overflow-hidden' type='text' placeholder='search' name='search'/>
               </div>
               <div className='relative mt-5 overflow-x-auto'>
-                  <div className='w-full text-sm text-left text-[#d0d2d6] '>
-                      <div className='font-bold text-sm uppercase border-b border-slate-700 '>
-                          <div className='justify-between items-start flex '>
+                  <div className='w-full text-sm text-left text-[#d0d2d6]'>
+                      <div className='font-bold text-sm uppercase border-b border-slate-700'>
+                          <div className='justify-between items-start flex'>
                               <div className='py-3 w-[25%]'>Order Id</div>
                               <div className='py-3 w-[13%]'>Price</div>
                               <div className='py-3 w-[18%]'>Payment Status</div>
@@ -41,7 +41,37 @@ function Order() {
                               <div className='py-3 w-[13%] font-medium whitespace-nowrap'>$345</div>
                               <div className='py-3 w-[18%] font-medium whitespace-nowrap'>Pending</div>
                               <div className='py-3 w-[18%] font-medium whitespace-nowrap'>Pending</div>
-                              <Link className='py-3 w-[18%] font-medium whitespace-nowrap'>view</Link>
+                              <Link to='/admin/dashboard/BuyerDetails' className='py-3 w-[18%] font-medium whitespace-nowrap'>view</Link>
+                              <div onClick={()=>setShow(!show)} className='py-3 w-[8%] cursor-pointer'>
+                              <BsArrowBarDown />
+                          </div>
+                          </div>
+                          <div className={show ? 'block border-b border-slate-700 bg-slate-800' : 'hidden'}>
+                          <div className='flex justify-start items-start border-b border-slate-700 px-2 pl-3'>
+                              <div className='py-3 w-[25%]'>#00d1e848</div>
+                              <div className='py-3 w-[13%] font-medium whitespace-nowrap'>$345</div>
+                              <div className='py-3 w-[18%] font-medium whitespace-nowrap'>Pending</div>
+                                  <div className='py-3 w-[18%] font-medium whitespace-nowrap'>Pending</div>
+                              </div>
+                              <div className='flex justify-start items-start border-b border-slate-700 px-2 pl-3'>
+                              <div className='py-3 w-[25%]'>#00d1e848</div>
+                              <div className='py-3 w-[13%] font-medium whitespace-nowrap'>$345</div>
+                              <div className='py-3 w-[18%] font-medium whitespace-nowrap'>Pending</div>
+                                  <div className='py-3 w-[18%] font-medium whitespace-nowrap'>Pending</div>
+                              </div>
+                              
+                          </div>
+
+                          
+                          
+                      </div>
+                      <div>
+                          <div className='justify-between flex items-start border-b order-slate-700'>
+                           <div className='py-3 w-[25%]'>#00d1e848</div>
+                              <div className='py-3 w-[13%] font-medium whitespace-nowrap'>$345</div>
+                              <div className='py-3 w-[18%] font-medium whitespace-nowrap'>Pending</div>
+                              <div className='py-3 w-[18%] font-medium whitespace-nowrap'>Pending</div>
+                              <Link to='/admin/dashboard/BuyerDetails' className='py-3 w-[18%] font-medium whitespace-nowrap'>view</Link>
                               <div onClick={()=>setShow(!show)} className='py-3 w-[8%] cursor-pointer'>
                               <BsArrowBarDown />
                           </div>
@@ -71,7 +101,7 @@ function Order() {
                               <div className='py-3 w-[13%] font-medium whitespace-nowrap'>$345</div>
                               <div className='py-3 w-[18%] font-medium whitespace-nowrap'>Pending</div>
                               <div className='py-3 w-[18%] font-medium whitespace-nowrap'>Pending</div>
-                              <Link className='py-3 w-[18%] font-medium whitespace-nowrap'>view</Link>
+                              <Link to='/admin/dashboard/BuyerDetails' className='py-3 w-[18%] font-medium whitespace-nowrap'>view</Link>
                               <div onClick={()=>setShow(!show)} className='py-3 w-[8%] cursor-pointer'>
                               <BsArrowBarDown />
                           </div>
@@ -101,7 +131,7 @@ function Order() {
                               <div className='py-3 w-[13%] font-medium whitespace-nowrap'>$345</div>
                               <div className='py-3 w-[18%] font-medium whitespace-nowrap'>Pending</div>
                               <div className='py-3 w-[18%] font-medium whitespace-nowrap'>Pending</div>
-                              <Link className='py-3 w-[18%] font-medium whitespace-nowrap'>view</Link>
+                              <Link to='/admin/dashboard/BuyerDetails' className='py-3 w-[18%] font-medium whitespace-nowrap'>view</Link>
                               <div onClick={()=>setShow(!show)} className='py-3 w-[8%] cursor-pointer'>
                               <BsArrowBarDown />
                           </div>
@@ -131,37 +161,7 @@ function Order() {
                               <div className='py-3 w-[13%] font-medium whitespace-nowrap'>$345</div>
                               <div className='py-3 w-[18%] font-medium whitespace-nowrap'>Pending</div>
                               <div className='py-3 w-[18%] font-medium whitespace-nowrap'>Pending</div>
-                              <Link className='py-3 w-[18%] font-medium whitespace-nowrap'>view</Link>
-                              <div onClick={()=>setShow(!show)} className='py-3 w-[8%] cursor-pointer'>
-                              <BsArrowBarDown />
-                          </div>
-                          </div>
-                          <div className={show ?'block border-b border-slate-700 bg-slate-800' : 'hidden'}>
-                          <div className='flex justify-start items-start border-b border-slate-700 px-2 pl-3'>
-                              <div className='py-3 w-[25%]'>#00d1e848</div>
-                              <div className='py-3 w-[13%] font-medium whitespace-nowrap'>$345</div>
-                              <div className='py-3 w-[18%] font-medium whitespace-nowrap'>Pending</div>
-                                  <div className='py-3 w-[18%] font-medium whitespace-nowrap'>Pending</div>
-                              </div>
-                              <div className='flex justify-start items-start border-b border-slate-700 px-2 pl-3'>
-                              <div className='py-3 w-[25%]'>#00d1e848</div>
-                              <div className='py-3 w-[13%] font-medium whitespace-nowrap'>$345</div>
-                              <div className='py-3 w-[18%] font-medium whitespace-nowrap'>Pending</div>
-                                  <div className='py-3 w-[18%] font-medium whitespace-nowrap'>Pending</div>
-                              </div>
-                              
-                          </div>
-
-                          
-                          
-                      </div>
-                      <div>
-                          <div className='justify-between flex items-start border-b order-slate-700'>
-                           <div className='py-3 w-[25%]'>#00d1e848</div>
-                              <div className='py-3 w-[13%] font-medium whitespace-nowrap'>$345</div>
-                              <div className='py-3 w-[18%] font-medium whitespace-nowrap'>Pending</div>
-                              <div className='py-3 w-[18%] font-medium whitespace-nowrap'>Pending</div>
-                              <Link className='py-3 w-[18%] font-medium whitespace-nowrap'>view</Link>
+                              <Link to='/admin/dashboard/BuyerDetails'   className='py-3 w-[18%] font-medium whitespace-nowrap'>view</Link>
                               <div onClick={()=>setShow(!show)} className='py-3 w-[8%] cursor-pointer'>
                               <BsArrowBarDown />
                           </div>
