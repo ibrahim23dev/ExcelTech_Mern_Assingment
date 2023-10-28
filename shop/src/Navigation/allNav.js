@@ -4,7 +4,12 @@ import { BiCategory, BiLoaderCircle } from 'react-icons/bi';
 import { FiUser } from 'react-icons/fi';
 import { FaUser } from 'react-icons/fa';
 import { BsCurrencyDollar } from 'react-icons/bs';
-import { CiChat1 } from 'react-icons/ci';
+import { BsChat } from 'react-icons/bs';
+import { CgProfile } from 'react-icons/cg'
+import { TbDiscount2Off } from 'react-icons/tb'
+import {BsChatLeftText} from 'react-icons/bs'
+import { SiProducthunt } from 'react-icons/si'
+import {BiMessageSquareAdd} from 'react-icons/bi'
 
 // Define your navigation data
 export const allNav = [
@@ -60,7 +65,7 @@ export const allNav = [
   {
     id: 8,
     title: 'Chat Seller',
-    icon: <CiChat1 />,
+    icon: <BsChat/>,
     role: 'admin',
     path: '/admin/dashboard/chatseller'
   },
@@ -75,21 +80,21 @@ export const allNav = [
   {
     id: 10,
     title: 'All Products',
-    icon: <AiFillDashboard />,
+    icon: <SiProducthunt/>,
     role: 'seller',
     path: '/seller/dasbord/all-product'
   },
   {
     id: 11,
     title: 'Add Products',
-    icon: <AiFillDashboard />,
+    icon: <BiMessageSquareAdd/>,
     role: 'seller',
-    path: '/seller/dasbord/add-product'
+    path: '/seller/dasbord/addproduct'
   },
   {
     id: 12,
     title: 'Discount Products',
-    icon: <AiFillDashboard />,
+    icon: <TbDiscount2Off/>,
     role: 'seller',
     path: '/seller/dasbord/dis-count'
   },
@@ -110,21 +115,21 @@ export const allNav = [
    {
     id: 15,
     title: 'Customer Chart',
-    icon: <AiFillDashboard />,
+    icon: <BsChatLeftText/>,
     role: 'seller',
     path: '/seller/dasbord/customerChart'
   },
     {
     id: 16,
     title: 'Chart Support',
-    icon: <CiChat1 />,
+    icon: <BsChat />,
     role: 'seller',
     path: '/seller/dasbordpayment/sellerChat'
   },
     {
     id: 17,
     title: 'Profile',
-    icon: <AiFillDashboard />,
+    icon: <CgProfile />,
     role: 'seller',
     path: '/seller/dasbordpayment/profile'
   }

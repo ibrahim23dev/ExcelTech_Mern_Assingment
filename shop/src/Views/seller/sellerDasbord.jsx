@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { BsCurrencyDollar } from "react-icons/bs";
 import { RiPrinterCloudLine } from "react-icons/ri";
 import { FaUsers } from "react-icons/fa";
@@ -7,8 +7,7 @@ import Chart from "react-apexcharts";
 import { Link } from "react-router-dom";
 import logo1 from "../../assets/images/admin.png";
 function sellerDasbord() {
-  
-   const state = {
+  const state = {
     series: [
       {
         name: "orders",
@@ -331,7 +330,5 @@ function sellerDasbord() {
     </div>
   );
 }
-  
 
-
-export default sellerDasbord
+export default sellerDasbord;
