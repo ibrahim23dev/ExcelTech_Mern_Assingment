@@ -83,11 +83,15 @@ function Header() {
             <div className='md-lg:w-full w-9/12'>
               <div className='flex justify-between md-lg:justify-center items-center flex-wrap pl-8'>
                 <ul className='flex justify-start items-start gap-8 text-sm font-bold uppercase md-lg:hidden'>
-                  <li className={`p-2 block ${pathname === '/' ? 'text-[#7FAD39]' : 'text-slate-600'}`}>Home</li>
-                  <li className={`p-2 block ${pathname === '/shop' ? 'text-[#7FAD39]' : 'text-slate-600'}`}>Shop</li>
-                  <li className={`p-2 block ${pathname === '/blog' ? 'text-[#7FAD39]' : 'text-slate-600'}`}>Blog</li>
-                  <li className={`p-2 block ${pathname === '/about' ? 'text-[#7FAD39]' : 'text-slate-600'}`}>About</li>
-                  <li className={`p-2 block ${pathname === '/contact' ? 'text-[#7FAD39]':'text-slate-600'}`}>Contact</li>
+                  <li><Link to='/' className={`p-2 block ${pathname === '/' ? 'text-[#7FAD39]' : 'text-slate-600'}`}>Home</Link></li>
+      <li><Link to='/shops' className={`p-2 block ${pathname === '/shop' ? 'text-[#7FAD39]' : 'text-slate-600'}`}>Shop</Link></li>
+                  
+                  <li><Link className={`p-2 block ${pathname === '/blog' ? 'text-[#7FAD39]' : 'text-slate-600'}`}>Blog</Link></li>
+                  
+                  <li><Link className={`p-2 block ${pathname === '/about' ? 'text-[#7FAD39]' : 'text-slate-600'}`}>About</Link></li>
+                  
+                  <li><Link className={`p-2 block ${pathname === '/contact' ? 'text-[#7FAD39]':'text-slate-600'}`}>Contact</Link></li>
+                  
                 </ul>
                 <div className='flex md-lg:hidden justify-center items-center gap-5'>
                   <div className='flex justify-center gap-5'>
@@ -145,7 +149,7 @@ function Header() {
               </div>
               <ul className='flex flex-col justify-start items-start gap-3 text-sm font-semibold uppercase'>
                   <li className={`py-2 block ${pathname === '/' ? 'text-[#7FAD39]' : 'text-slate-600'}`}>Home</li>
-                  <li className={`py-2 block ${pathname === '/shop' ? 'text-[#7FAD39]' : 'text-slate-600'}`}>Shop</li>
+                  <li className={`py-2 block ${pathname === '/shops' ? 'text-[#7FAD39]' : 'text-slate-600'}`}>Shop</li>
                   <li className={`py-2 block ${pathname === '/blog' ? 'text-[#7FAD39]' : 'text-slate-600'}`}>Blog</li>
                   <li className={`py-2 block ${pathname === '/about' ? 'text-[#7FAD39]' : 'text-slate-600'}`}>About</li>
                   <li className={`py-2 block ${pathname === '/contact' ? 'text-[#7FAD39]':'text-slate-600'}`}>Contact</li>

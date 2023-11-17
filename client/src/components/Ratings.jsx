@@ -5,7 +5,7 @@ const Ratings = ({ ratings }) => {
     return (
         <>
             {
-                ratings >= 1 ? <span className='text-[#EDBB0E]'><FaStar /></span> : ratings >= .5 ? <span className='text-[#EDBB0E]'><FaStarHalfAlt /></span> : <span className='text-slate-600'><CiStar /></span>
+                ratings >= 1 ? <span className='text-[#EDBB0E]'><FaStar /></span> : ratings >= 1.5 ? <span className='text-[#EDBB0E]'><FaStarHalfAlt /></span> : <span className='text-slate-600'><CiStar /></span>
             }
             {
                 ratings >= 2 ? <span className='text-[#EDBB0E]'><FaStar /></span> : ratings >= 1.5 ? <span className='text-[#EDBB0E]'><FaStarHalfAlt /></span> : <span className='text-slate-600'><CiStar /></span>
