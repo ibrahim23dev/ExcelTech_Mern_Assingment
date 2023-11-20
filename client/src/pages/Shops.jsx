@@ -1,65 +1,61 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Range } from 'react-range';
-import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
-import Headers from '../components/Header';
-import Footer from '../components/Footer';
-import Products from '../components/products/Products';
-import { AiFillStar } from 'react-icons/ai';
-import { CiStar } from 'react-icons/ci';
-import { BsFillGridFill } from 'react-icons/bs';
-import { FaThList } from 'react-icons/fa';
-//import ShopProducts from '../components/products/ShopProducts';
-//import { useSelector } from 'react-redux';
-//import Pagination from '../components/Pagination';
+import React, {  useState } from 'react'
+import { Link } from 'react-router-dom'
+import { Range } from 'react-range'
+import { MdOutlineKeyboardArrowRight } from 'react-icons/md'
+import Headers from '../components/Header'
+import Footer from '../components/Footer'
+import Products from '../components/products/Products'
+import { AiFillStar } from 'react-icons/ai'
+import { CiStar } from 'react-icons/ci'
+import { BsFillGridFill } from 'react-icons/bs'
+import { FaThList } from 'react-icons/fa'
+import ShopProducts from '../components/products/ShopProducts'
+import Pagination from '../components/Pagination'
 //import { price_range_product, query_products } from '../store/reducers/homeReducer'
-//import { useDispatch, useSelector } from 'react-redux';
+//import { useDispatch, useSelector } from 'react-redux'
 
 const Shops = () => {
-    
-
-    //const {  latest_product,  priceRange, parPage } = useSelector(state => state.home)
-
-    // const dispatch = useDispatch()
-    //const [pageNumber, setPageNumber] = useState(1)
-    //const [styles, setStyles] = useState('grid')
-    const [filter, setFilter] = useState(true)
     const categorys = [
-        'Clothing',
-        'Sports',
-        'Phones',
-        'Laptop',
-        'Tablet',
-        'Bags',
-        'Telivision',
-        'Audio'
-    ]
+    'Clothing',
+    'Sports',
+    'Phones',
+    'Laptop',
+    'Tablet',
+    'Bags',
+    'Telivision',
+    'Audio'
+]
+
+   // const { products, totalProduct, latest_product, categorys, priceRange, parPage } = useSelector(state => state.home)
+
+    //const dispatch = useDispatch()
+    const [pageNumber, setPageNumber] = useState(1)
+    const [styles, setStyles] = useState('grid')
+    const [filter, setFilter] = useState(true)
     //const [category, setCategory] = useState('')
-    //const [state, setState] = useState()
-    // const [rating, setRatingQ] = useState('')
-    //const [sortPrice, setSortPrice] = useState('')
-    //useEffect(() => {
-    // setState({
-    // values: [priceRange.low, priceRange.high]
-    //})
-    // }, [priceRange])
+    const [state, setState] = useState({ values: [20, 2000] })
+    const [ setRatingQ] = useState('')
+    const [ setSortPrice] = useState('')
+    const [parPage] = useState(3);
 
-    // useEffect(() => {
-    //  dispatch(price_range_product())
-    //}, [])
-    
-
-    //const queryCategoey = (e, value) => {
-    //if (e.target.checked) {
-    //   setCategory(value)
-    // } else {
-    //   setCategory('')
-    // }
-    //}
-    // console.log(category)
-    
-    
     {/*useEffect(() => {
+        dispatch(price_range_product())
+    }, [])
+    useEffect(() => {
+        setState({
+            values: [priceRange.low, priceRange.high]
+        })
+    }, [priceRange])
+
+    const queryCategoey = (e, value) => {
+        if (e.target.checked) {
+            setCategory(value)
+        } else {
+            setCategory('')
+        }
+    }
+    console.log(category)
+    useEffect(() => {
         dispatch(
             query_products({
                 low: state.values[0],
@@ -70,22 +66,19 @@ const Shops = () => {
                 pageNumber
             })
         )
-        }, [state.values[0], state.values[1], category, rating, pageNumber, sortPrice]) 
-    
-  */ }
+    }, [state.values[0], state.values[1], category, rating, pageNumber, sortPrice])
 
-    // const resetRating = () => {
-    //     setRatingQ('')
-    //     dispatch(query_products({
-    //         low: state.values[0],
-    //         high: state.values[1],
-    //         category,
-    //         rating: '',
-    //         sortPrice,
-    //         pageNumber
-    //     }))
-    // }
-    
+    const resetRating = () => {
+        setRatingQ('')
+        dispatch(query_products({
+            low: state.values[0],
+            high: state.values[1],
+            category,
+            rating: '',
+            sortPrice,
+            pageNumber
+        }))
+    }*/}
 
     return (
         <div>
@@ -105,7 +98,7 @@ const Shops = () => {
                 </div>
             </section>
             <section className='py-16'>
-                <div className='w-[85%] md:w-[90%] sm:w-[90%] lg:w-[90%] h-full mx-auto'>
+                <div className='w-[85%] md:w-[90%%] sm:w-[90%] lg:w-[90%] h-full mx-auto'>
                     <div className={`md:block hidden ${!filter ? 'mb-6' : 'mb-0'}`}>
                         <button onClick={() => setFilter(!filter)} className='text-center w-full py-2 px-3 bg-indigo-500 text-white'>Filter Product</button>
                     </div>
@@ -115,29 +108,16 @@ const Shops = () => {
                             <div className='py-2'>
                                 {
                                     categorys.map((c, i) => <div className='flex justify-start items-center gap-2 py-1' key={i}>
-                                        <input checked={categorys === c ? true : false} type="checkbox" id={c} />
+                                        <input   type="checkbox" id={c} />
                                         <label className='text-slate-600 block cursor-pointer' htmlFor={c}>{c}</label>
                                     </div>)
                                 }
                             </div>
-                           </div>
-                        </div>
-                    </div>
-            </section >
-            <Footer />
-        </div>
-    )
-}
-
-
-export default Shops
-
-
-{/*  <div className='py-2 flex flex-col gap-5'>
+                            <div className='py-2 flex flex-col gap-5'>
                                 <h2 className='text-3xl font-bold mb-3 text-slate-600'>Price</h2>
-                                <Range 
+                                <Range
                                     step={5}
-                                    min={50}
+                                    min={20}
                                     max={2000}
                                     values={state.values}
                                     onChange={(values) => setState({ values })}
@@ -154,50 +134,44 @@ export default Shops
                                     <span className='text-red-500 font-bold text-lg'>${Math.floor(state.values[0])} - ${Math.floor(state.values[1])}</span>
                                 </div>
                             </div>
-
                             <div className='py-3 flex flex-col gap-4'>
                                 <h2 className='text-3xl font-bold mb-3 text-slate-600'>Rating</h2>
                                 <div className='flex flex-col gap-3'>
-                                    
-                                    <div className='text-orange-500 flex justify-start items-start gap-2 text-xl cursor-pointer'>
+                                    <div onClick={() => setRatingQ(5)} className='text-orange-500 flex justify-start items-start gap-2 text-xl cursor-pointer'>
                                         <span><AiFillStar /></span>
                                         <span><AiFillStar /></span>
                                         <span><AiFillStar /></span>
                                         <span><AiFillStar /></span>
                                         <span><AiFillStar /></span>
                                     </div>
-
-                                    <div  className='text-orange-500 flex justify-start items-start gap-2 text-xl cursor-pointer'>
+                                    <div onClick={() => setRatingQ(4)} className='text-orange-500 flex justify-start items-start gap-2 text-xl cursor-pointer'>
                                         <span><AiFillStar /></span>
                                         <span><AiFillStar /></span>
                                         <span><AiFillStar /></span>
                                         <span><AiFillStar /></span>
                                         <span><CiStar /></span>
                                     </div>
-                                    <div  className='text-orange-500 flex justify-start items-start gap-2 text-xl cursor-pointer'>
+                                    <div onClick={() => setRatingQ(3)} className='text-orange-500 flex justify-start items-start gap-2 text-xl cursor-pointer'>
                                         <span><AiFillStar /></span>
                                         <span><AiFillStar /></span>
                                         <span><AiFillStar /></span>
                                         <span><CiStar /></span>
                                         <span><CiStar /></span>
                                     </div>
-
-                                    <div className='text-orange-500 flex justify-start items-start gap-2 text-xl cursor-pointer'>
+                                    <div onClick={() => setRatingQ(2)} className='text-orange-500 flex justify-start items-start gap-2 text-xl cursor-pointer'>
                                         <span><AiFillStar /></span>
                                         <span><AiFillStar /></span>
                                         <span><CiStar /></span>
                                         <span><CiStar /></span>
                                         <span><CiStar /></span>
                                     </div>
-
-                                    <div  className='text-orange-500 flex justify-start items-start gap-2 text-xl cursor-pointer'>
+                                    <div onClick={() => setRatingQ(1)} className='text-orange-500 flex justify-start items-start gap-2 text-xl cursor-pointer'>
                                         <span><AiFillStar /></span>
                                         <span><CiStar /></span>
                                         <span><CiStar /></span>
                                         <span><CiStar /></span>
                                         <span><CiStar /></span>
                                     </div>
-
                                     <div  className='text-orange-500 flex justify-start items-start gap-2 text-xl cursor-pointer'>
                                         <span><CiStar /></span>
                                         <span><CiStar /></span>
@@ -216,7 +190,7 @@ export default Shops
                                 <div className='py-4 bg-white mb-10 px-3 rounded-md flex justify-between items-start border'>
                                     <h2 className='text-lg font-medium text-slate-600'>12 Products</h2>
                                     <div className='flex justify-center items-center gap-3'>
-                                        <select  className='p-1 border outline-0 text-slate-600 font-semibold' name="" id="">
+                                        <select onChange={(e) => setSortPrice(e.target.value)} className='p-1 border outline-0 text-slate-600 font-semibold' name="" id="">
                                             <option value="">Sort By</option>
                                             <option value="low-to-high">Low to High Price</option>
                                             <option value="high-to-low">High to Low Price</option>
@@ -231,15 +205,24 @@ export default Shops
                                         </div>
                                     </div>
                                 </div>
+
                                 <div className='pb-8'>
-                                <ShopProducts  styles={styles} />
+                                    <ShopProducts products={Products} styles={styles} />
                                 </div>
 
-                                {/*<div>
+                                <div>
                                     {
-                                         <Pagination pageNumber={pageNumber} setPageNumber={setPageNumber} totalItem={20} parPage={parPage} showItem={Math.floor(totalItem / parPage)} />
+                                         <Pagination pageNumber={pageNumber} setPageNumber={setPageNumber} totalItem={20} parPage={parPage} showItem={Math.floor(20 / 3)} />
                                     }
-                                
-                                </div> */}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <Footer />
+        </div>
+    )
+}
 
-                            
+export default Shops

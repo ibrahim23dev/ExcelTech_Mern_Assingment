@@ -2,12 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import { Provider } from 'react-redux';
+import { Toaster } from 'react-hot-toast';
+import store from './store/index';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+   <Provider store={store}>
     <App />
-  </React.StrictMode>
+    <Toaster toastOptions={{
+      position: 'top-right',
+      style: {
+        background: 'white',
+        color: 'black'
+      }
+    }} />
+  </Provider>
+  
 );
 
 

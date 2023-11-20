@@ -1,8 +1,8 @@
 const categoryModel = require('../../models/categoryModel')
 const productModel = require('../../models/productModel')
-const queryProducts = require('../../utiles/queryProducts')
+const queryProducts = require('../../utils/queryProducts')
 const reviewModel = require('../../models/reviewModel')
-const moment = require('moment')
+const moment = require('moment');
 const {
     mongo: {
         ObjectId
