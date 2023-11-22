@@ -9,7 +9,7 @@ const sellerCustomerMessage = require('../../models/chat/sellerCustomerMessage')
 const productModel = require('../../models/productModel')
 
 const { mongo: { ObjectId } } = require('mongoose')
-const { responseReturn } = require('../../utiles/response')
+const { responseReturn } = require('../../utils/response')
 
 module.exports.get_seller_dashboard_data = async (req, res) => {
     const { id } = req;

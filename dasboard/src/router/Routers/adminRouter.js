@@ -9,12 +9,8 @@ const ActiveSeller = lazy(() => import('../../Views/admin/activeSeller'));
 const DeactiveSeller = lazy(() => import('../../Views/admin/DeactiveSeller'));
 const SellerChart = lazy(() => import('../../Views/admin/ChartSeller'));
 const PaymentRequest = lazy(() => import('../../Views/admin/paymentRequest'));
-
 const SellerDetails = lazy(() => import('../../Views/admin/SellerDetails'));
 const BuyerDetails =lazy(() => import('../../Views/admin/buyerDetails'));
-
-
-
 
 export const adminRoute= [
     {

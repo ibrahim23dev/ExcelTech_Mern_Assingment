@@ -1,19 +1,18 @@
-import {lazy,Suspense} from 'react'
-import ReactDOM from 'react-dom/client'
-//import {Provider} from 'react-redux'
+import React, { lazy, Suspense } from 'react';
+import ReactDOM from 'react-dom/client';
+import { Toaster } from 'react-hot-toast'
+import store from './store/index';
+import { Provider } from 'react-redux'
 import './index.css'
-import {Toaster} from 'react-hot-toast'
 import { BrowserRouter } from 'react-router-dom'
-//import Store from './Store/index';
-const App = lazy(() => import('./App'));
-
-ReactDOM.createRoot(document.getElementById('root')).render(
-
+const App = lazy(() => import('./App'))
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
   <BrowserRouter>
-    
-    <Suspense>
+    <Provider store={store}>
+      <Suspense fallback='loading...'>
         <App />
-        <Toaster 
+        <Toaster
           toastOptions={{
             position: 'top-right',
             style: {
@@ -23,6 +22,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           }}
         />
       </Suspense>
-    
+    </Provider>
   </BrowserRouter>
 );
+

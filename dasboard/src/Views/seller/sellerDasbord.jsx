@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import logo1 from "../../assets/images/admin.png";
 function sellerDasbord() {
   const state = {
+    
     series: [
       {
         name: "orders",

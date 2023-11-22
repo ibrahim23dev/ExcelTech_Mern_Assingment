@@ -195,7 +195,6 @@ export const homeReducer = createSlice({
             state.totalReview = payload.totalReview
             state.rating_review = payload.rating_review
         },
-
     }
 })
 export const {

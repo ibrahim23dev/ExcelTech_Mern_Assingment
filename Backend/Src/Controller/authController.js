@@ -1,10 +1,11 @@
 const adminmodel = require('../models/adminModel');
+const SellerModel = require('../models/sellerModel');
 const bcrypt = require('bcrypt');
 const { resposeReturn } = require('../utils/response');
 const {CreateToken} = require('../utils/CreateToken');
 
 class AuthController {
-    async adminlogin(req, res) {
+     adminlogin= async(req, res)=> {
         try {
             const { email, password } = req.body;
             const admin = await adminmodel.findOne({ email }).select('+password');
@@ -32,7 +33,30 @@ class AuthController {
         }
     }
 
-    async getUser(req, res) {
+    seller_register = async (req, res) => {
+        const { email, name, password } = req.body
+        try {
+            const getUser = await SellerModel.findOne({ email })
+            if (getUser) {
+                resposeReturn(res, 404, {error: 'email already exit'})
+            }
+            else {
+                const seller = await SellerModel.create({
+                    name,
+                    email,
+                    password: await bcrypt.hash(password, 10),
+                    method: 'menualy',
+                    shopInfo:{}
+                })
+                console.log(seller)
+            }
+        } catch (error) {
+            console.log(error)
+            
+        }
+    }
+
+     getUser= async(req, res)=> {
         try {
             const { role, id } = req;
 

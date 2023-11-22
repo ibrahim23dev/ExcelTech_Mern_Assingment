@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const orderController = require('../../controllers/order/orderController')
+const orderController = require('../../Controller/order/orderController')
 
 // ---- customer
 router.post('/home/order/palce-order', orderController.place_order)

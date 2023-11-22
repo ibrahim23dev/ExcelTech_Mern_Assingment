@@ -1,6 +1,6 @@
 const router = require('express').Router()
-const paymentController = require('../controllers/payment/paymentController')
-const { authMiddleware } = require('../middlewares/authMiddleware')
+const paymentController = require('../Controller/payment/paymentController');
+const { authMiddleware } = require('../middleware/authMiddleware');
 
 router.get('/payment/create-stripe-connect-account', authMiddleware, paymentController.create_stripe_connect_account)
 

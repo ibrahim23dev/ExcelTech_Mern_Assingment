@@ -44,6 +44,7 @@ class chatController {
                     })
                 }
 
+                
                 const checkCustomer = await sellerCustomerModel.findOne({
                     $and: [{
                         myId: {
