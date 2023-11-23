@@ -3,7 +3,7 @@ const customerModel = require('../../models/customerModel')
 const sellerCustomerModel = require('../../models/chat/sellerCustomerModel')
 const sellerCustomerMessage = require('../../models/chat/sellerCustomerMessage')
 const adminSellerMessage = require('../../models/chat/adminSellerMessage')
-const { responseReturn } = require('../../utiles/response')
+const { responseReturn } = require('../../utils/response')
 
 
 class chatController {

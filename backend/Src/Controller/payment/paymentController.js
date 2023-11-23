@@ -3,7 +3,7 @@ const sellerModel = require('../../models/sellerModel')
 const sellerWallet = require('../../models/sellerWallet')
 const myShopWallet = require('../../models/myShopWallet')
 const withdrowRequest = require('../../models/withdrowRequest')
-const { responseReturn } = require('../../utiles/response')
+const {resposeReturn} = require('../../utils/response')
 const { mongo: { ObjectId } } = require('mongoose')
 const { v4: uuidv4 } = require('uuid')
 const stripe = require('stripe')('sk_test_51Nk8Y4F0B89ncn3xMHxYCwnaouDR6zuX83ckbJivv2jOUJ9CTka6anJcKMLnatgeBUeQq1RcRYynSPgp6f5zS4qF00YZFMYHuD')
@@ -30,7 +30,7 @@ class paymentController {
                     stripeId: account.id,
                     code: uid
                 })
-                responseReturn(res, 201, { url: accountLink.url })
+                resposeReturn(res, 201, { url: accountLink.url })
             } else {
                 const account = await stripe.accounts.create({ type: 'express' })
 
@@ -45,7 +45,7 @@ class paymentController {
                     stripeId: account.id,
                     code: uid
                 })
-                responseReturn(res, 201, { url: accountLink.url })
+                resposeReturn(res, 201, { url: accountLink.url })
             }
         } catch (error) {
             console.log('stripe connect account create error ' + error.message)
@@ -61,12 +61,12 @@ class paymentController {
                 await sellerModel.findByIdAndUpdate(id, {
                     payment: 'active'
                 })
-                responseReturn(res, 200, { message: 'payment active' })
+               resposeReturn(res, 200, { message: 'payment active' })
             } else {
-                responseReturn(res, 404, { message: 'payment active failed' })
+                resposeReturn(res, 404, { message: 'payment active failed' })
             }
         } catch (error) {
-            responseReturn(res, 500, { message: 'Internal server error' })
+            resposeReturn(res, 500, { message: 'Internal server error' })
         }
     }
 
@@ -122,7 +122,7 @@ class paymentController {
             if (totalAmount > 0) {
                 availableAmount = totalAmount - (pendingAmount + withdrowAmount)
             }
-            responseReturn(res, 200, {
+            resposeReturn(res, 200, {
                 totalAmount,
                 pendingAmount,
                 withdrowAmount,
@@ -144,9 +144,9 @@ class paymentController {
                 sellerId,
                 amount: parseInt(amount)
             })
-            responseReturn(res, 200, { withdrowal, message: 'withdrowal request send' })
+            resposeReturn(res, 200, { withdrowal, message: 'withdrowal request send' })
         } catch (error) {
-            responseReturn(res, 500, { message: 'Internal server error' })
+           resposeReturn(res, 500, { message: 'Internal server error' })
         }
     }
 
@@ -154,9 +154,9 @@ class paymentController {
 
         try {
             const withdrowalRequest = await withdrowRequest.find({ status: 'pending' })
-            responseReturn(res, 200, { withdrowalRequest })
+            resposeReturn(res, 200, { withdrowalRequest })
         } catch (error) {
-            responseReturn(res, 500, { message: 'Internal server error' })
+            resposeReturn(res, 500, { message: 'Internal server error' })
         }
     }
 
@@ -175,10 +175,10 @@ class paymentController {
                 destination: stripeId
             })
             await withdrowRequest.findByIdAndUpdate(paymentId, { status: 'success' })
-            responseReturn(res, 200, { payment, message: 'request confirm success' })
+            resposeReturn(res, 200, { payment, message: 'request confirm success' })
         } catch (error) {
             console.log(error)
-            responseReturn(res, 500, { message: 'Internal server error' })
+            resposeReturn(res, 500, { message: 'Internal server error' })
         }
 
     }

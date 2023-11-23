@@ -1,8 +1,8 @@
 const cardModel = require('../../models/cardModel')
 const wishlistModel = require('../../models/wishlistModel')
 const {
-    responseReturn
-} = require('../../utiles/response')
+    resposeReturn
+} = require('../../utils/response')
 const {
     mongo: {
         ObjectId
@@ -30,7 +30,7 @@ class cardController {
                 ]
             })
             if (product) {
-                responseReturn(res, 404, {
+                resposeReturn(res, 404, {
                     error: 'Product already added to card'
                 })
             } else {
@@ -39,7 +39,7 @@ class cardController {
                     productId,
                     quantity
                 })
-                responseReturn(res, 201, {
+                resposeReturn(res, 201, {
                     message: 'Add to card success',
                     product
                 })
@@ -131,7 +131,7 @@ class cardController {
 
                 }
             }
-            responseReturn(res, 200, {
+            resposeReturn(res, 200, {
                 card_products: p,
                 price: calculatePrice,
                 card_product_count,
@@ -151,7 +151,7 @@ class cardController {
         } = req.params
         try {
             await cardModel.findByIdAndDelete(card_id)
-            responseReturn(res, 200, {
+            resposeReturn(res, 200, {
                 message: 'success'
             })
         } catch (error) {
@@ -170,7 +170,7 @@ class cardController {
             await cardModel.findByIdAndUpdate(card_id, {
                 quantity: quantity + 1
             })
-            responseReturn(res, 200, {
+            resposeReturn(res, 200, {
                 message: 'success'
             })
         } catch (error) {
@@ -189,7 +189,7 @@ class cardController {
             await cardModel.findByIdAndUpdate(card_id, {
                 quantity: quantity - 1
             })
-            responseReturn(res, 200, {
+            resposeReturn(res, 200, {
                 message: 'success'
             })
         } catch (error) {
@@ -206,12 +206,12 @@ class cardController {
                 slug
             })
             if (product) {
-                responseReturn(res, 404, {
+                resposeReturn(res, 404, {
                     error: 'Allready added'
                 })
             } else {
                 await wishlistModel.create(req.body)
-                responseReturn(res, 201, {
+                resposeReturn(res, 201, {
                     message: 'add to wishlist success'
                 })
             }
@@ -228,7 +228,7 @@ class cardController {
             const wishlists = await wishlistModel.find({
                 userId
             })
-            responseReturn(res, 200, {
+            resposeReturn(res, 200, {
                 wishlistCount: wishlists.length,
                 wishlists
             })
@@ -243,7 +243,7 @@ class cardController {
         } = req.params
         try {
             const wishlist = await wishlistModel.findByIdAndDelete(wishlistId)
-            responseReturn(res, 200, {
+            resposeReturn(res, 200, {
                 message: 'Remove success',
                 wishlistId
             })

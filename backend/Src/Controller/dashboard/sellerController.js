@@ -1,5 +1,5 @@
 const sellerModel = require('../../models/sellerModel')
-const { responseReturn } = require('../../utiles/response')
+const { resposeReturn } = require('../../utils/response')
 
 class sellerController {
     
@@ -12,10 +12,10 @@ class sellerController {
             } else {
                 const sellers = await sellerModel.find({ status: 'pending' }).skip(skipPage).limit(parPage).sort({ createdAt: -1 })
                 const totalSeller = await sellerModel.find({ status: 'pending' }).countDocuments()
-                responseReturn(res, 200, { totalSeller, sellers })
+                resposeReturn(res, 200, { totalSeller, sellers })
             }
         } catch (error) {
-            responseReturn(res, 500, { error: error.message })
+            resposeReturn(res, 500, { error: error.message })
         }
     }
     get_seller = async (req, res) => {
@@ -23,9 +23,9 @@ class sellerController {
 
         try {
             const seller = await sellerModel.findById(sellerId)
-            responseReturn(res, 200, { seller })
+            resposeReturn(res, 200, { seller })
         } catch (error) {
-            responseReturn(res, 500, { error: error.message })
+            resposeReturn(res, 500, { error: error.message })
         }
     }
 
@@ -36,9 +36,9 @@ class sellerController {
                 status
             })
             const seller = await sellerModel.findById(sellerId)
-            responseReturn(res, 200, { seller, message: 'seller status update success' })
+            resposeReturn(res, 200, { seller, message: 'seller status update success' })
         } catch (error) {
-            responseReturn(res, 500, { error: error.message })
+            resposeReturn(res, 500, { error: error.message })
         }
     }
 
@@ -61,11 +61,11 @@ class sellerController {
                     status: 'active'
                 }).countDocuments()
 
-                responseReturn(res, 200, { totalSeller, sellers })
+                resposeReturn(res, 200, { totalSeller, sellers })
             } else {
                 const sellers = await sellerModel.find({ status: 'active' }).skip(skipPage).limit(parPage).sort({ createdAt: -1 })
                 const totalSeller = await sellerModel.find({ status: 'active' }).countDocuments()
-                responseReturn(res, 200, { totalSeller, sellers })
+                resposeReturn(res, 200, { totalSeller, sellers })
             }
 
         } catch (error) {
@@ -92,11 +92,11 @@ class sellerController {
                     status: 'deactive'
                 }).countDocuments()
 
-                responseReturn(res, 200, { totalSeller, sellers })
+               resposeReturn(res, 200, { totalSeller, sellers })
             } else {
                 const sellers = await sellerModel.find({ status: 'deactive' }).skip(skipPage).limit(parPage).sort({ createdAt: -1 })
                 const totalSeller = await sellerModel.find({ status: 'deactive' }).countDocuments()
-                responseReturn(res, 200, { totalSeller, sellers })
+                resposeReturn(res, 200, { totalSeller, sellers })
             }
 
         } catch (error) {

@@ -10,8 +10,8 @@ const {
 } = require('mongoose')
 
 const {
-    responseReturn
-} = require('../../utiles/response')
+    resposeReturn
+} = require('../../utils/response')
 class homeControllers {
 
     formateProduct = (products) => {
@@ -34,7 +34,7 @@ class homeControllers {
     get_categorys = async (req, res) => {
         try {
             const categorys = await categoryModel.find({})
-            responseReturn(res, 200, {
+            resposeReturn(res, 200, {
                 categorys
             })
         } catch (error) {
@@ -60,7 +60,7 @@ class homeControllers {
             })
             const discount_product = this.formateProduct(allProduct3);
 
-            responseReturn(res, 200, {
+            resposeReturn(res, 200, {
                 products,
                 latest_product,
                 topRated_product,
@@ -106,7 +106,7 @@ class homeControllers {
                     }
                 ]
             }).limit(3)
-            responseReturn(res, 200, {
+           resposeReturn(res, 200, {
                 product,
                 relatedProducts,
                 moreProducts
@@ -133,7 +133,7 @@ class homeControllers {
                 priceRange.high = getForPrice[getForPrice.length - 1].price
                 priceRange.low = getForPrice[0].price
             }
-            responseReturn(res, 200, {
+            resposeReturn(res, 200, {
                 latest_product,
                 priceRange
             })
@@ -153,7 +153,7 @@ class homeControllers {
 
             const result = new queryProducts(products, req.query).categoryQuery().searchQuery().ratingQuery().priceQuery().sortByPrice().skip().limit().getProducts();
 
-            responseReturn(res, 200, {
+           resposeReturn(res, 200, {
                 products: result,
                 totalProduct,
                 parPage
@@ -198,7 +198,7 @@ class homeControllers {
                 rating: productRating
             })
 
-            responseReturn(res, 201, {
+            resposeReturn(res, 201, {
                 message: "Review Success"
             })
         } catch (error) {
@@ -278,7 +278,7 @@ class homeControllers {
             }).skip(skipPage).limit(limit).sort({
                 createdAt: -1
             })
-            responseReturn(res, 200, {
+            resposeReturn(res, 200, {
                 reviews,
                 totalReview: getAll.length,
                 rating_review

@@ -5,7 +5,7 @@ const myShopWallet = require('../../models/myShopWallet')
 const sellerWallet = require('../../models/sellerWallet')
 
 const { mongo: { ObjectId } } = require('mongoose')
-const { responseReturn } = require('../../utiles/response')
+const { resposeReturn } = require('../../utils/response')
 
 const moment = require('moment')
 const stripe = require('stripe')('sk_test_51Nk8Y4F0B89ncn3xMHxYCwnaouDR6zuX83ckbJivv2jOUJ9CTka6anJcKMLnatgeBUeQq1RcRYynSPgp6f5zS4qF00YZFMYHuD')
@@ -96,7 +96,7 @@ class orderController {
             setTimeout(() => {
                 this.paymentCheck(order.id)
             }, 15000)
-            responseReturn(res, 201, {
+            resposeReturn(res, 201, {
                 message: "order placeed success",
                 orderId: order.id
             })
@@ -154,7 +154,7 @@ class orderController {
                     customerId: new ObjectId(customerId)
                 })
             }
-            responseReturn(res, 200, {
+            resposeReturn(res, 200, {
                 orders
             })
         } catch (error) {
@@ -168,7 +168,7 @@ class orderController {
 
         try {
             const order = await customerOrder.findById(orderId)
-            responseReturn(res, 200, {
+            resposeReturn(res, 200, {
                 order
             })
         } catch (error) {
@@ -209,7 +209,7 @@ class orderController {
                     }
                 ])
 
-                responseReturn(res, 200, { orders, totalOrder: totalOrder.length })
+               resposeReturn(res, 200, { orders, totalOrder: totalOrder.length })
             }
         } catch (error) {
             console.log(error.message)
@@ -233,7 +233,7 @@ class orderController {
                     }
                 }
             ])
-            responseReturn(res, 200, { order: order[0] })
+           resposeReturn(res, 200, { order: order[0] })
         } catch (error) {
             console.log('get admin order ' + error.message)
         }
@@ -247,10 +247,10 @@ class orderController {
             await customerOrder.findByIdAndUpdate(orderId, {
                 delivery_status: status
             })
-            responseReturn(res, 200, { message: 'order status change success' })
+            resposeReturn(res, 200, { message: 'order status change success' })
         } catch (error) {
             console.log('get admin order status error ' + error.message)
-            responseReturn(res, 500, { message: 'internal server error' })
+            resposeReturn(res, 500, { message: 'internal server error' })
         }
     }
 
@@ -274,11 +274,11 @@ class orderController {
                 const totalOrder = await authOrderModel.find({
                     sellerId,
                 }).countDocuments()
-                responseReturn(res, 200, { orders, totalOrder })
+                resposeReturn(res, 200, { orders, totalOrder })
             }
         } catch (error) {
             console.log('get seller order error ' + error.message)
-            responseReturn(res, 500, { message: 'internal server error' })
+            resposeReturn(res, 500, { message: 'internal server error' })
         }
     }
 
@@ -289,7 +289,7 @@ class orderController {
         try {
             const order = await authOrderModel.findById(orderId)
 
-            responseReturn(res, 200, { order })
+           resposeReturn(res, 200, { order })
         } catch (error) {
             console.log('get admin order ' + error.message)
         }
@@ -303,10 +303,10 @@ class orderController {
             await authOrderModel.findByIdAndUpdate(orderId, {
                 delivery_status: status
             })
-            responseReturn(res, 200, { message: 'order status change success' })
+            resposeReturn(res, 200, { message: 'order status change success' })
         } catch (error) {
             console.log('get admin order status error ' + error.message)
-            responseReturn(res, 500, { message: 'internal server error' })
+            resposeReturn(res, 500, { message: 'internal server error' })
         }
     }
 
@@ -321,7 +321,7 @@ class orderController {
                     enabled: true
                 }
             })
-            responseReturn(res, 200, { clientSecret: payment.client_secret })
+            resposeReturn(res, 200, { clientSecret: payment.client_secret })
         } catch (error) {
             console.log(error.message)
         }
@@ -359,7 +359,7 @@ class orderController {
                 })
             }
 
-            responseReturn(res, 200, { message: 'success' })
+            resposeReturn(res, 200, { message: 'success' })
 
         } catch (error) {
             console.log(error.message)
