@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react'
-import Headers from '../components/Headers'
+import Headers from '../components/Header'
 import Footer from '../components/Footer'
 import { FaFacebookF } from 'react-icons/fa'
 import { Link,useNavigate } from 'react-router-dom'
@@ -89,7 +89,7 @@ const Login = () => {
                             </div>
                         </div>
                         <div className='w-full h-full py-4 pr-4'>
-                            <img className='w-full h-[95%]' src="http://localhost:3000/images/login.jpg" alt="" />
+                            <img className='w-full h-[95%]' src="http://localhost:3001/images/login.jpg" alt="" />
                         </div>
                     </div>
                 </div>

@@ -63,7 +63,7 @@ const FeatureProducts = () => {
                             
                                <div className='flex justify-center items-center absolute text-white w-[38px] h-[38px] rounded-full bg-red-500 font-semibold text-xs left-2 top-2'>6%</div>
                             
-                            <img className='sm:w-full w-full h-[240px]' src={`http://localhost:3000/images/products/${p}.webp`} alt="product image" />
+                            <img className='sm:w-full w-full h-[240px]' src={`http://localhost:3001/images/products/${p}.webp`} alt="product image" />
                             <ul className='flex transition-all duration-700 -bottom-10 justify-center items-center gap-2 absolute w-full group-hover:bottom-3'>
                                 <li  className='w-[38px] h-[38px] cursor-pointer bg-white flex justify-center items-center rounded-full hover:bg-[#7fad39] hover:text-white hover:rotate-[720deg] transition-all'><AiFillHeart /></li>
                                 <Link to={`/product/details/${p}`} className='w-[38px] h-[38px] cursor-pointer bg-white flex justify-center items-center rounded-full hover:bg-[#7fad39] hover:text-white hover:rotate-[720deg] transition-all' ><FaEye /></Link>

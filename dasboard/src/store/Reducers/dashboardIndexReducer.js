@@ -27,8 +27,6 @@ export const get_admin_dashboard_index_data = createAsyncThunk(
     }
 )
 
-
-
 export const dashboardIndexReducer = createSlice({
     name: 'dashboardIndex',
     initialState: {

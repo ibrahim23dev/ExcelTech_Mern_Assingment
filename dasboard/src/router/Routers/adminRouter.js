@@ -5,7 +5,7 @@ const Order = lazy(() => import('../../Views/admin/Order'));
 const Category = lazy(() => import('../../Views/admin/Category'));
 const SellerRequest = lazy(() => import('../../Views/admin/SellerRequest'));
 const Logout = lazy(() => import('../../Views/admin/logout'));
-const ActiveSeller = lazy(() => import('../../Views/admin/activeSeller'));
+const Seller = lazy(() => import('../../Views/admin/Sellers'));
 const DeactiveSeller = lazy(() => import('../../Views/admin/DeactiveSeller'));
 const SellerChart = lazy(() => import('../../Views/admin/ChartSeller'));
 const PaymentRequest = lazy(() => import('../../Views/admin/paymentRequest'));
@@ -30,7 +30,7 @@ export const adminRoute= [
     },
     {
         path: '/admin/dashboard/activeseller',
-        element: <ActiveSeller/>,
+        element: <Seller/>,
         ability: 'admin'
     },
     {

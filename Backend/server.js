@@ -13,9 +13,9 @@ const socket = require('socket.io')
 const server = http.createServer(app)
 
 app.use(cors({
-    origin: ['http://localhost:3000'],
+    origin: ['http://localhost:3000','http://localhost:3001'],
     credentials: true
-}));
+}))
 
 const io = socket(server, {
     cors: {
@@ -23,6 +23,8 @@ const io = socket(server, {
         credentials: true
     }
 })
+
+
 var allCustomer = []
 var allSeller = []
 
@@ -134,8 +136,10 @@ io.on('connection', (soc) => {
 
     })
 })
+
 app.use(bodyParser.json())
 app.use(cookieParser())
+
 
 app.use('/api', require('./Src/router/chatRoutes'));
 app.use('/api', require('./Src/router/paymentRoutes'))
@@ -148,6 +152,7 @@ app.use('/api', require('./Src/router/home/customerAuthRoutes'));
 app.use('/api', require('./Src/router/dashbord/sellerRoutes'));
 app.use('/api', require('./Src/router/dashbord/categoryRoutes'));
 app.use('/api', require('./Src/router/dashbord/productRoutes'))
+app.get('/', (req, res) => res.send('Hello World!'))
 const port = process.env.PORT
 dbConnect()
 server.listen(port, () => console.log(`Server is running on port ${port}!`))

@@ -1,7 +1,8 @@
 const {adminRoute} = require('./adminRouter');
-//const {SellerRoute} = require('./SellerRouter');
+const {sellerRoutes} =require('./SellerRouter')
 
 export const privateRoute = [
     ...adminRoute,
-    //...SellerRoute
+    ...sellerRoutes
+    
 ];

@@ -9,7 +9,8 @@ import { CgProfile } from 'react-icons/cg'
 import { TbDiscount2Off } from 'react-icons/tb'
 import {BsChatLeftText} from 'react-icons/bs'
 import { SiProducthunt } from 'react-icons/si'
-import {BiMessageSquareAdd} from 'react-icons/bi'
+import { BiMessageSquareAdd } from 'react-icons/bi'
+import { AiOutlinePlus } from 'react-icons/ai'
 
 // Define your navigation data
 export const allNav = [
@@ -71,68 +72,67 @@ export const allNav = [
   },
   
   {
-    id: 9,
-    title: 'Dashboard',
-    icon: <AiFillDashboard />,
-    role: 'seller',
-    path: '/seller/dasbord'
-  },
-  {
-    id: 10,
-    title: 'All Products',
-    icon: <SiProducthunt/>,
-    role: 'seller',
-    path: '/seller/dasbord/all-product'
-  },
-  {
-    id: 11,
-    title: 'Add Products',
-    icon: <BiMessageSquareAdd/>,
-    role: 'seller',
-    path: '/seller/dasbord/addproduct'
-  },
-  {
-    id: 12,
-    title: 'Discount Products',
-    icon: <TbDiscount2Off/>,
-    role: 'seller',
-    path: '/seller/dasbord/dis-count'
-  },
-  {
-    id: 13,
-    title: 'Order',
-    icon: <AiOutlineShopping />,
-    role: 'seller',
-    path: '/seller/dasbord/order'
-  },
-  {
-    id: 14,
-    title: 'payment',
-    icon: <BsCurrencyDollar />,
-    role: 'seller',
-    path: '/seller/dasbord/payment'
-  },
-   {
-    id: 15,
-    title: 'Customer Chart',
-    icon: <BsChatLeftText/>,
-    role: 'seller',
-    path: '/seller/dasbord/customerChart'
-  },
+        id: 9,
+        title: 'Dashboard',
+        icon: <AiFillDashboard />,
+        role: 'seller',
+        path: '/seller/dashboard'
+    },
     {
-    id: 16,
-    title: 'Chart Support',
-    icon: <BsChat />,
-    role: 'seller',
-    path: '/seller/dasbordpayment/sellerChat'
-  },
+        id: 10,
+        title: 'Add Product',
+        icon: <AiOutlinePlus />,
+        role: 'seller',
+        path: '/seller/dashboard/add-product'
+    },
     {
-    id: 17,
-    title: 'Profile',
-    icon: <CgProfile />,
-    role: 'seller',
-    path: '/seller/dasbordpayment/profile'
-  }
-
+        id: 11,
+        title: 'All Product',
+        icon: <SiProducthunt />,
+        role: 'seller',
+        path: '/seller/dashboard/products'
+    },
+    {
+        id: 12,
+        title: 'Discount Product',
+        icon: <TbDiscount2Off />,
+        role: 'seller',
+        path: '/seller/dashboard/discount-products'
+    },
+    {
+        id: 13,
+        title: 'Orders',
+        icon: <AiOutlineShopping />,
+        role: 'seller',
+        path: '/seller/dashboard/orders'
+    },
+    {
+        id: 14,
+        title: 'Payments',
+        icon: <BsCurrencyDollar />,
+        role: 'seller',
+        path: '/seller/dashboard/payments'
+    },
+    {
+        id: 15,
+        title: 'Chat Customer',
+        icon: <BiMessageSquareAdd />,
+        role: 'seller',
+        path: '/seller/dashboard/chat-customer'
+    },
+    {
+        id: 16,
+        title: 'Chat Support',
+        icon: <BsChatLeftText />,
+        role: 'seller',
+        path: '/seller/dashboard/chat-support'
+    },
+    {
+        id: 17,
+        title: 'Profile',
+        icon: <CgProfile />,
+        role: 'seller',
+        path: '/seller/dashboard/profile'
+    }
 
 ];

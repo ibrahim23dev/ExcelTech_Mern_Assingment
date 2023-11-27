@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Headers from '../components/Headers'
+import Headers from '../components/Header'
 import Footer from '../components/Footer'
 import { Link, Outlet, useNavigate } from 'react-router-dom'
 import { FaList } from 'react-icons/fa'

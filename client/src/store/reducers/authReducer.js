@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import api from '../../api/api'
-import jwt from 'jwt-decode'
+import { jwtDecode}  from 'jwt-decode';
 export const customer_register = createAsyncThunk(
     'auth/customer_register',
     async (info, { rejectWithValue, fulfillWithValue }) => {
@@ -30,7 +30,7 @@ export const customer_login = createAsyncThunk(
 
 const decodeToken = (token) => {
     if (token) {
-        const userInfo = jwt(token)
+        const userInfo = jwtDecode(token)
         return userInfo
     } else {
         return ''

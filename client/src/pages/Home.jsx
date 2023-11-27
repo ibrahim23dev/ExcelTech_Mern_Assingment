@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Heders from '../components/Header';
-import Banner from '../components/banner';
+import Banner from '../components/Banner';
 import Categorys from '../components/Categorys';
 import FeatureProducts from '../components/products/FeatureProducts';
 import Products from '../components/products/Products';
@@ -21,7 +21,7 @@ const Home = () => {
                 <Categorys />
             </div>
             <div className='py-[45px]'>
-                <FeatureProducts products={Products} />
+                <FeatureProducts products={products} />
             </div>
             <div className='py-10'>
                 <div className='w-[85%] flex flex-wrap mx-auto'>
