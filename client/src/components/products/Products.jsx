@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 const Products = ({title}) => {
     const products = [
         [1, 2, 3],
-        [4,5,6]
+        [4,5]
     ]
     const responsive = {
         superLargeDesktop: {

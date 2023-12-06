@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+//import { useSelector } from 'react-redux'
 import { getNavs } from '../Navigation/index'
 import { logout } from '../store/Reducers/authReducer'
 import { BiLogInCircle } from 'react-icons/bi'
 import { useDispatch } from 'react-redux'
 import logo from '../assets/images/logo1.png'
 
-const Sidebar = ({ showSidebar, setShowSidebar }) => {
+const SideBar = ({ showSidebar, setShowSidebar }) => {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const { role } = useSelector(state => state.auth)
+  //const { role } = useSelector(state => state.auth)
   const { pathname } = useLocation()
   const [allNav, setAllNav] = useState([])
   useEffect(() => {
-    const navs = getNavs(role)
+    const navs = getNavs("admin")
     setAllNav(navs)
-  }, [role])
+  }, [])
 
   return (
     <div>
@@ -40,7 +40,7 @@ const Sidebar = ({ showSidebar, setShowSidebar }) => {
               </li>)
             }
             <li>
-              <button onClick={() => dispatch(logout({ navigate, role }))} className='text-[#d0d2d6] font-normal duration-200 px-[12px] py-[9px] rounded-sm flex justify-start items-center gap-[12px] hover:pl-4 transition-all w-full mb-1 '>
+              <button onClick={() => dispatch(logout({ navigate}))} className='text-[#d0d2d6] font-normal duration-200 px-[12px] py-[9px] rounded-sm flex justify-start items-center gap-[12px] hover:pl-4 transition-all w-full mb-1 '>
                 <span><BiLogInCircle /></span>
                 <span>Logout</span>
               </button>
@@ -52,4 +52,4 @@ const Sidebar = ({ showSidebar, setShowSidebar }) => {
   )
 }
 
-export default Sidebar
+export default SideBar
