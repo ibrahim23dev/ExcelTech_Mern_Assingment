@@ -10,9 +10,9 @@ import toast from "react-hot-toast";
 import { useSelector, useDispatch } from "react-redux";
 import Search from "../components/Search";
 import {
-  categoryAdd,
-  messageClear,
   get_category,
+  category_add,
+  messageClear
 } from "../../store/Reducers/categoryReducer";
 function Category() {
   const dispatch = useDispatch();
@@ -40,7 +40,7 @@ function Category() {
   };
   const add_category = (e) => {
     e.preventDefault();
-    dispatch(categoryAdd(state));
+    dispatch(category_add(state));
   };
 
   useEffect(() => {

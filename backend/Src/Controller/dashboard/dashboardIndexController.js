@@ -3,13 +3,12 @@ const customerOrder = require('../../models/customerOrder')
 const sellerWallet = require('../../models/sellerWallet')
 const myShopWallet = require('../../models/myShopWallet')
 const sellerModel = require('../../models/sellerModel')
-
 const adminSellerMessage = require('../../models/chat/adminSellerMessage')
 const sellerCustomerMessage = require('../../models/chat/sellerCustomerMessage')
 const productModel = require('../../models/productModel')
 
 const { mongo: { ObjectId } } = require('mongoose')
-const { responseReturn } = require('../../utils/response')
+const { resposeReturn } = require('../../utils/response')
 
 module.exports.get_seller_dashboard_data = async (req, res) => {
     const { id } = req;
@@ -72,7 +71,7 @@ module.exports.get_seller_dashboard_data = async (req, res) => {
             sellerId: new ObjectId(id)
         }).limit(5)
 
-        responseReturn(res, 200, {
+        resposeReturn(res, 200, {
             totalOrder,
             totalSale: totalSele.length > 0 ? totalSele[0].totalAmount : 0,
             totalPendingOrder,
@@ -108,7 +107,7 @@ module.exports.get_admin_dashboard_data = async (req, res) => {
 
         const recentOrders = await customerOrder.find({}).limit(5)
 
-        responseReturn(res, 200, {
+        resposeReturn(res, 200, {
             totalOrder,
             totalSale: totalSele.length > 0 ? totalSele[0].totalAmount : 0,
             totalSeller,

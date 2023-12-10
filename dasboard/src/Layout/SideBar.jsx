@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-//import { useSelector } from 'react-redux'
 import { getNavs } from '../Navigation/index'
 import { logout } from '../store/Reducers/authReducer'
 import { BiLogInCircle } from 'react-icons/bi'
-import { useDispatch } from 'react-redux'
+import { useDispatch,useSelector } from 'react-redux'
 import logo from '../assets/images/logo1.png'
 
 const SideBar = ({ showSidebar, setShowSidebar }) => {
@@ -12,13 +11,13 @@ const SideBar = ({ showSidebar, setShowSidebar }) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  //const { role } = useSelector(state => state.auth)
+  const { role} = useSelector(state => state.auth)
   const { pathname } = useLocation()
   const [allNav, setAllNav] = useState([])
   useEffect(() => {
-    const navs = getNavs("admin")
+    const navs = getNavs(role)
     setAllNav(navs)
-  }, [])
+  }, [role])
 
   return (
     <div>

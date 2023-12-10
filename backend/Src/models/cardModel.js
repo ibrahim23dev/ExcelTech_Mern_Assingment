@@ -15,4 +15,4 @@ const cardSchema = new Schema({
     }
 },{timestamps : true})
 
-module.exports = model('cardProducts',cardSchema)
+module.exports = model('ProductCards',cardSchema)
