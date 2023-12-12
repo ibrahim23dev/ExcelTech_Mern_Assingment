@@ -20,4 +20,4 @@ categorySchema.index({
 });
 
 // Change the model name to 'category'
-module.exports = model('categorys', categorySchema);
+module.exports = model('categories', categorySchema);
