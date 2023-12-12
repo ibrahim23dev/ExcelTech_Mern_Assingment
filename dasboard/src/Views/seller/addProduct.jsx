@@ -12,13 +12,13 @@ const AddProduct = () => {
     const dispatch = useDispatch()
     const { categorys } = useSelector(state => state.category)
     const { successMessage, errorMessage, loader } = useSelector(state => state.product)
-    useEffect(() => {
-        dispatch(get_category({
-            searchValue: '',
-            parPage: '',
-            page: ""
-        }))
-    }, [])
+     useEffect(() => {
+         dispatch(get_category({
+             searchValue: '',
+             parPage: '',
+             page: ""
+         }))
+     }, [])
     const [state, setState] = useState({
         name: "",
         description: '',

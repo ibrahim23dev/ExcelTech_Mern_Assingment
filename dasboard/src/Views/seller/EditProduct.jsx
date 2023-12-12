@@ -13,13 +13,13 @@ const EditProduct = () => {
     const dispatch = useDispatch()
     const { categorys } = useSelector(state => state.category)
     const { product, loader, errorMessage, successMessage } = useSelector(state => state.product)
-    useEffect(() => {
-        dispatch(get_category({
-            searchValue: '',
-            parPage: '',
-            page: ""
-        }))
-    }, [])
+     useEffect(() => {
+       dispatch(get_category({
+             searchValue: '',
+             parPage: '',
+             page: ""
+         }))
+     }, [])
     const [state, setState] = useState({
         name: "",
         description: '',

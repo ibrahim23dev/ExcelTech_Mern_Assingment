@@ -10,9 +10,8 @@ import toast from "react-hot-toast";
 import { useSelector, useDispatch } from "react-redux";
 import Search from "../components/Search";
 import {
-  get_category,
-  category_add,
-  messageClear
+  CategoryAdd, messageClear,get_category
+  
 } from "../../store/Reducers/categoryReducer";
 function Category() {
   const dispatch = useDispatch();
@@ -28,6 +27,7 @@ function Category() {
     name: "",
     image: "",
   });
+
   const imageHandle = (e) => {
     let files = e.target.files;
     if (files.length > 0) {
@@ -38,9 +38,11 @@ function Category() {
       });
     }
   };
+  
   const add_category = (e) => {
     e.preventDefault();
-    dispatch(category_add(state));
+    dispatch(CategoryAdd(state));
+    
   };
 
   useEffect(() => {
@@ -63,10 +65,10 @@ function Category() {
     const obj = {
       parPage: parseInt(parPage),
       page: parseInt(currentPage),
-      searchValue,
-    };
-    dispatch(get_category(obj));
-  }, [searchValue, currentPage, parPage]);
+     searchValue,
+     };
+     dispatch(get_category(obj));
+   }, [searchValue, currentPage, parPage]);
 
   return (
     <div className="px-2 lg:px-7 pt-5">

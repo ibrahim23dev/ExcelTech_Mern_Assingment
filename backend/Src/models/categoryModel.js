@@ -8,11 +8,11 @@ const categorySchema = new Schema({
   image: {
     type: String,
     required: true,
-  },
+   },
   slug: {
     type: String,
-    required: true,
-  },
+     required: true,
+   },
 }, { timestamps: true });
 
 categorySchema.index({
@@ -20,4 +20,4 @@ categorySchema.index({
 });
 
 // Change the model name to 'category'
-module.exports = model('category', categorySchema);
+module.exports = model('categorys', categorySchema);
