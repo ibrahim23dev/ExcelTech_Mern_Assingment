@@ -7,7 +7,7 @@ import toast from 'react-hot-toast'
 import { PropagateLoader } from 'react-spinners'
 import { overrideStyle } from '../../utils/utils'
 import { get_category } from '../../store/Reducers/categoryReducer'
-import { add_product, messageClear } from '../../store/Reducers/productReducer'
+import {  messageClear, add_product } from '../../store/Reducers/productReducer'
 const AddProduct = () => {
     const dispatch = useDispatch()
     const { categorys } = useSelector(state => state.category)

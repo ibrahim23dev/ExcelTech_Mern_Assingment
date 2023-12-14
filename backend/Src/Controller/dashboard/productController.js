@@ -1,6 +1,6 @@
 const formidable = require('formidable')
 const cloudinary = require('cloudinary').v2
-const productModel = require('../../models/productModel');
+const ProductModel = require('../../models/productModel');
 const { resposeReturn } = require('../../utils/response');
 class productController {
     add_product = async (req, res) => {
@@ -28,7 +28,7 @@ class productController {
                     allImageUrl = [...allImageUrl, result.url]
                 }
 
-                await productModel.create({
+                await ProductModel.create({
                     sellerId: id,
                     name,
                     slug,
@@ -57,18 +57,18 @@ class productController {
 
         try {
             if (searchValue) {
-                const products = await productModel.find({
+                const products = await ProductModel.find({
                     $text: { $search: searchValue },
                     sellerId: id
                 }).skip(skipPage).limit(parPage).sort({ createdAt: -1 })
-                const totalProduct = await productModel.find({
+                const totalProduct = await ProductModel.find({
                     $text: { $search: searchValue },
                     sellerId: id
                 }).countDocuments()
                  resposeReturn(res, 200, { totalProduct, products })
             } else {
-                const products = await productModel.find({ sellerId: id }).skip(skipPage).limit(parPage).sort({ createdAt: -1 })
-                const totalProduct = await productModel.find({ sellerId: id }).countDocuments()
+                const products = await ProductModel.find({ sellerId: id }).skip(skipPage).limit(parPage).sort({ createdAt: -1 })
+                const totalProduct = await ProductModel.find({ sellerId: id }).countDocuments()
                  resposeReturn(res, 200, { totalProduct, products })
             }
         } catch (error) {
@@ -79,7 +79,7 @@ class productController {
     product_get = async (req, res) => {
         const { productId } = req.params;
         try {
-            const product = await productModel.findById(productId)
+            const product = await ProductModel.findById(productId)
              resposeReturn(res, 200, { product })
         } catch (error) {
             console.log(error.message)
@@ -90,10 +90,10 @@ class productController {
         name = name.trim()
         const slug = name.split(' ').join('-')
         try {
-            await productModel.findByIdAndUpdate(productId, {
+            await ProductModel.findByIdAndUpdate(productId, {
                 name, description, discount, price, brand, productId, stock, slug
             })
-            const product = await productModel.findById(productId)
+            const product = await ProductModel.findById(productId)
              resposeReturn(res, 200, { product, message: 'product update success' })
         } catch (error) {
              resposeReturn(res, 500, { error: error.message })
@@ -119,7 +119,7 @@ class productController {
                     const result = await cloudinary.uploader.upload(newImage.filepath, { folder: 'products' })
 
                     if (result) {
-                        let { images } = await productModel.findById(productId)
+                        let { images } = await ProductModel.findById(productId)
                         const index = images.findIndex(img => img === oldImage)
                         images[index] = result.url;
 
@@ -127,7 +127,7 @@ class productController {
                             images
                         })
 
-                        const product = await productModel.findById(productId)
+                        const product = await ProductModel.findById(productId)
                         resposeReturn(res, 200, { product, message: 'product image update success' })
                     } else {
                          resposeReturn(res, 404, { error: 'image upload failed' })
