@@ -49,6 +49,7 @@ class productController {
 
         })
     }
+
     products_get = async (req, res) => {
         const { page, searchValue, parPage } = req.query
         const { id } = req;

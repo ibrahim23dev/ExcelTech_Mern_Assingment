@@ -5,45 +5,55 @@ const formidable = require('formidable')
 
 class categoryController {
 
-    add_category = async (req, res) => {
+   add_category = async (req, res) => {
         const form = new formidable.IncomingForm();
+
         form.parse(req, async (err, fields, files) => {
             if (err) {
-                resposeReturn(res, 404, { error: 'something error' })
+                resposeReturn(res, 404, { error: 'something error' });
             } else {
-                let { name } = fields
-                let { image } = files
-                
-               const slug = typeof name === 'string' ? name.split(' ').join('-') : '';
-
-                const config={
-                    cloud_name: process.env.cloud_name,
-                    api_key: process.env.api_key,
-                    api_secret: process.env.api_secret,
-                    secure: true
-                }
-
                 try {
-                    const result = await cloudinary.uploader.upload(files.image[0].filepath, config)
-                      console.log(result)
+                    const { name } = fields;
+                    const { image } = files;
+
+                    const slug = typeof name === 'string' ? name.split(' ').join('-') : '';
+                    cloudinary.config({
+                        cloud_name: process.env.cloud_name,
+                        api_key: process.env.api_key,
+                        api_secret: process.env.api_secret,
+                        secure: true
+                    });
+
+                    console.log('Uploaded Files:', files);
+
+                    if (!image || !image[0] || !image[0].filepath) {
+                        resposeReturn(res, 400, { error: 'No file uploaded' });
+                        return;
+                    }
+
+                    const result = await cloudinary.uploader.upload(image[0].filepath, { folder: 'categories' });
+                    console.log('Cloudinary Upload Result:', result);
+
                     if (result) {
                         const Category = await categoryModel.create({
-                            name:fields,
+                            name: fields.name,
                             slug,
-                            image: result.url
-                        })
-                        console.log(fields)
-                       resposeReturn(res, 201, { Category, message: 'category add success' })
+                            image: result.url,
+                        });
+
+                        console.log('Category Created:', Category);
+                        resposeReturn(res, 201, { Category, message: 'category add success' });
                     } else {
-                        resposeReturn(res, 404, { error: 'Image upload failed' })
+                        console.log('Image upload failed');
+                        resposeReturn(res, 404, { error: 'Image upload failed' });
                     }
                 } catch (error) {
-                    resposeReturn(res, 500, { error: 'Internal server error' })
+                    console.error(error);
+                    resposeReturn(res, 500, { error: 'Internal server error' });
                 }
-
             }
-        })
-    }
+        });
+    };
 
    get_category = async (req, res) => {
     const { page, searchValue, parPage } = req.query;
