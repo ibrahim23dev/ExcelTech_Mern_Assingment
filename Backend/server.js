@@ -70,15 +70,15 @@ io.on('connection', (socket) => {
 
     // ... (other socket events)
 
-    socket.on('disconnect', () => {
+   socket.on('disconnect', () => {
         console.log('User disconnect');
-        remove(socket.id);
-        removeAdmin(socket.id);
-        io.emit('activeAdmin', { status: false });
-        io.emit('activeSeller', allSeller);
-        io.emit('activeCustomer', allCustomer);
-    });
-});
+         remove(socket.id);
+         removeAdmin(socket.id);
+       io.emit('activeAdmin', { status: false });
+         io.emit('activeSeller', allSeller);
+         io.emit('activeCustomer', allCustomer);
+     });
+ });
 
 // Express routes
 app.use('/api', require('./Src/router/chatRoutes'));
