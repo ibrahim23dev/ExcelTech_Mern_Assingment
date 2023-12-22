@@ -1,11 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import api from '../../api/api'
+import Api from '../../api/api'
 import { jwtDecode}  from 'jwt-decode';
 export const customer_register = createAsyncThunk(
     'auth/customer_register',
     async (info, { rejectWithValue, fulfillWithValue }) => {
         try {
-            const { data } = await api.post('/customer/customer-register', info)
+            const { data } = await Api.post('/customer/customer-register', info)
             localStorage.setItem('customerToken', data.token)
             return fulfillWithValue(data)
         } catch (error) {
@@ -18,7 +18,7 @@ export const customer_login = createAsyncThunk(
     'auth/customer_login',
     async (info, { rejectWithValue, fulfillWithValue }) => {
         try {
-            const { data } = await api.post('/customer/customer-login', info)
+            const { data } = await Api.post('/customer/customer-login', info)
             localStorage.setItem('customerToken', data.token)
             return fulfillWithValue(data)
         } catch (error) {

@@ -7,7 +7,7 @@ export const categoryAdd = createAsyncThunk(
             const formData = new FormData()
             formData.append('name', name)
             formData.append('image', image)
-            const { data } = await Api.post('/categoryadded', formData, { withCredentials: true })
+            const { data } = await Api.post('/category-add', formData, { withCredentials: true })
             return fulfillWithValue(data)
         } catch (error) {
             return rejectWithValue(error.response.data)
@@ -19,7 +19,7 @@ export const get_category = createAsyncThunk(
     'category/get_category',
     async ({ parPage, page, searchValue }, { rejectWithValue, fulfillWithValue }) => {
         try {
-            const { data } = await Api.get(`/categorygeted?page=${page}&&searchValue=${searchValue}&&parPage=${parPage}`, { withCredentials: true })
+            const { data } = await Api.get(`/category-get?page=${page}&&searchValue=${searchValue}&&parPage=${parPage}`, { withCredentials: true })
             return fulfillWithValue(data)
         } catch (error) {
             return rejectWithValue(error.response.data)

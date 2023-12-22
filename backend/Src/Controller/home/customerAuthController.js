@@ -1,24 +1,24 @@
-const customerModel = require('../../models/customerModel')
+const CustomerModel = require('../../models/customerModel')
 const { resposeReturn } = require('../../utils/response')
 const { CreateToken } = require('../../utils/CreateToken')
-const sellerCustomerModel = require('../../models/chat/sellerCustomerModel')
+const SellerCustomerModel = require('../../models/chat/sellerCustomerModel')
 const bcrypt = require('bcrypt')
 class customerAuthController {
     customer_register = async (req, res) => {
         const { name, email, password } = req.body
 
         try {
-            const customer = await customerModel.findOne({ email })
+            const customer = await CustomerModel.findOne({ email })
             if (customer) {
                 resposeReturn(res, 404, { error: 'Email already exits' })
             } else {
-                const createCustomer = await customerModel.create({
+                const createCustomer = await CustomerModel.create({
                     name: name.trim(),
                     email: email.trim(),
                     password: await bcrypt.hash(password, 10),
                     method: 'menualy'
                 })
-                await sellerCustomerModel.create({
+                await SellerCustomerModel.create({
                     myId: createCustomer.id
                 })
                 const token = await CreateToken({
@@ -40,7 +40,7 @@ class customerAuthController {
     customer_login = async (req, res) => {
         const { email, password } = req.body
         try {
-            const customer = await customerModel.findOne({ email }).select('+password')
+            const customer = await CustomerModel.findOne({ email }).select('+password')
             if (customer) {
                 const match = await bcrypt.compare(password, customer.password)
                 if (match) {

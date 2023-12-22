@@ -2,25 +2,25 @@ import React, { useState, useEffect } from 'react'
 import { FaEdit, FaEye, FaTrash } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import Pagination from '../Pagenation';
+import Pagination from '../Pagenation'
 import Search from '../components/Search'
 import { get_products } from '../../store/Reducers/productReducer'
 const Products = () => {
     const dispatch = useDispatch()
-    const { products, totalProduct } = useSelector(state => state.product)
-
+    const { products, totalProduct } = useSelector(state => state.Product) || {};
     const [currentPage, setCurrentPage] = useState(1)
     const [searchValue, setSearchValue] = useState('')
     const [parPage, setParPage] = useState(5)
-
     useEffect(() => {
+        //console.log('Products:', products); 
         const obj = {
             parPage: parseInt(parPage),
             page: parseInt(currentPage),
             searchValue
         }
         dispatch(get_products(obj))
-    }, [searchValue, currentPage, parPage])
+}, [searchValue, currentPage, parPage]);
+
 
     return (
         <div className='px-2 lg:px-7 pt-5 '>
@@ -43,7 +43,7 @@ const Products = () => {
                         </thead>
                         <tbody>
                             {
-                                products.map((d, i) => <tr key={i}>
+                                products ?.map((d, i) => <tr key={i}>
                                     <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>{i + 1}</td>
                                     <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>
                                         <img className='w-[45px] h-[45px]' src={d.images[0]} alt="" />
@@ -85,7 +85,7 @@ const Products = () => {
                         <Pagination
                             pageNumber={currentPage}
                             setPageNumber={setCurrentPage}
-                            totalItem={50}
+                            totalItem={totalProduct}
                             parPage={parPage}
                             showItem={4}
                         />

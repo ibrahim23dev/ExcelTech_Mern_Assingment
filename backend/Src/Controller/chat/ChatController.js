@@ -3,7 +3,7 @@ const customerModel = require('../../models/customerModel')
 const sellerCustomerModel = require('../../models/chat/sellerCustomerModel')
 const sellerCustomerMessage = require('../../models/chat/sellerCustomerMessage')
 const adminSellerMessage = require('../../models/chat/adminSellerMessage')
-const { responseReturn } = require('../../utils/response')
+const { resposeReturn } = require('../../utils/response')
 
 
 class chatController {
@@ -97,7 +97,7 @@ class chatController {
                     myId: userId
                 })
                 const currentFd = MyFriends.myFriends.find(s => s.fdId === sellerId)
-                responseReturn(res, 200, {
+                resposeReturn(res, 200, {
                     myFriends: MyFriends.myFriends,
                     currentFd,
                     messages
@@ -106,7 +106,7 @@ class chatController {
                 const MyFriends = await sellerCustomerModel.findOne({
                     myId: userId
                 })
-                responseReturn(res, 200, {
+                resposeReturn(res, 200, {
                     myFriends: MyFriends.myFriends
                 })
             }
@@ -162,7 +162,7 @@ class chatController {
                 }
             )
 
-            responseReturn(res, 201, { message })
+            resposeReturn(res, 201, { message })
 
         } catch (error) {
             console.log(error)
@@ -175,7 +175,7 @@ class chatController {
         try {
             const data = await sellerCustomerModel.findOne({ myId: sellerId })
 
-            responseReturn(res, 200, {
+            resposeReturn(res, 200, {
                 customers: data.myFriends
             })
         } catch (error) {
@@ -213,7 +213,7 @@ class chatController {
             const currentCustomer = await customerModel.findById(customerId)
 
 
-            responseReturn(res, 200, { messages, currentCustomer })
+            resposeReturn(res, 200, { messages, currentCustomer })
 
 
         } catch (error) {
@@ -269,7 +269,7 @@ class chatController {
                 }
             )
 
-            responseReturn(res, 201, { message })
+            resposeReturn(res, 201, { message })
 
         } catch (error) {
             console.log(error)
@@ -279,7 +279,7 @@ class chatController {
     get_sellers = async (req, res) => {
         try {
             const sellers = await sellerModel.find({})
-            responseReturn(res, 200, { sellers })
+            resposeReturn(res, 200, { sellers })
         } catch (error) {
             console.log(error)
         }
@@ -294,7 +294,7 @@ class chatController {
                 senderName,
                 message
             })
-            responseReturn(res, 200, { message: messageData })
+            resposeReturn(res, 200, { message: messageData })
         } catch (error) {
             console.log(error)
         }
@@ -331,7 +331,7 @@ class chatController {
             if (receverId) {
                 currentSeller = await sellerModel.findById(receverId)
             }
-            responseReturn(res, 200, { messages, currentSeller })
+            resposeReturn(res, 200, { messages, currentSeller })
         } catch (error) {
             console.log(error)
         }
@@ -364,7 +364,7 @@ class chatController {
                     }
                 ]
             })
-            responseReturn(res, 200, { messages })
+            resposeReturn(res, 200, { messages })
         } catch (error) {
             console.log(error)
         }

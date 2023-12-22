@@ -3,6 +3,8 @@ const SellerModel = require('../models/sellerModel');
 const Bcrypt = require('bcrypt');
 const { resposeReturn } = require('../utils/response');
 const {CreateToken} = require('../utils/CreateToken');
+const formidable = require('formidable');
+const cloudinary = require('cloudinary');
 
 class AuthController {
      adminlogin= async(req, res)=> {
@@ -96,10 +98,10 @@ class AuthController {
             console.log(error.message);
         }
     }
-
+   
     profile_image_upload = async (req, res) => {
         const { id } = req
-        const form = formidable({ multiples: true })
+        const form =new formidable.IncomingForm();
         form.parse(req, async (err, _, files) => {
             cloudinary.config({
                 cloud_name: process.env.cloud_name,
@@ -109,7 +111,7 @@ class AuthController {
             })
             const { image } = files
             try {
-                const result = await cloudinary.uploader.upload(image.filepath, { folder: 'profile' })
+                const result = await cloudinary.uploader.upload(image[0].filepath, { folder: 'profile' })
                 if (result) {
                     await SellerModel.findByIdAndUpdate(id, {
                         image: result.url

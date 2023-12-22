@@ -40,13 +40,13 @@ export const sellerRoutes = [
     },
     {
         path: '/seller/dashboard/edit-product/:productId',
-        element: <EditProduct />,
+        element: <EditProduct/>,
         role: 'seller',
         status: 'active'
     },
     {
         path: '/seller/dashboard/products',
-        element: <Products />,
+        element: <Products/>,
         role: 'seller',
         status: 'active'
     },

@@ -2,7 +2,7 @@ import {
     createSlice,
     createAsyncThunk
 } from '@reduxjs/toolkit'
-import api from '../../api/api'
+import Api from '../../api/api'
 
 export const add_to_card = createAsyncThunk(
     'card/add_to_card',
@@ -13,7 +13,7 @@ export const add_to_card = createAsyncThunk(
         try {
             const {
                 data
-            } = await api.post('/home/product/add-to-card', info)
+            } = await Api.post('/home/product/add-to-card', info)
             return fulfillWithValue(data)
         } catch (error) {
             console.log(error.response)
@@ -31,7 +31,7 @@ export const get_card_products = createAsyncThunk(
         try {
             const {
                 data
-            } = await api.get(`/home/product/get-card-product/${userId}`)
+            } = await Api.get(`/home/product/get-card-product/${userId}`)
             return fulfillWithValue(data)
         } catch (error) {
             return rejectWithValue(error.response.data)
@@ -48,7 +48,7 @@ export const delete_card_product = createAsyncThunk(
         try {
             const {
                 data
-            } = await api.delete(`/home/product/delete-card-product/${card_id}`)
+            } = await Api.delete(`/home/product/delete-card-product/${card_id}`)
             return fulfillWithValue(data)
         } catch (error) {
             return rejectWithValue(error.response.data)
@@ -66,7 +66,7 @@ export const quantity_inc = createAsyncThunk(
         try {
             const {
                 data
-            } = await api.put(`/home/product/quantity-inc/${card_id}`)
+            } = await Api.put(`/home/product/quantity-inc/${card_id}`)
             return fulfillWithValue(data)
         } catch (error) {
             return rejectWithValue(error.response.data)
@@ -83,7 +83,7 @@ export const quantity_dec = createAsyncThunk(
         try {
             const {
                 data
-            } = await api.put(`/home/product/quantity-dec/${card_id}`)
+            } = await Api.put(`/home/product/quantity-dec/${card_id}`)
             return fulfillWithValue(data)
         } catch (error) {
             return rejectWithValue(error.response.data)
@@ -100,7 +100,7 @@ export const add_to_wishlist = createAsyncThunk(
         try {
             const {
                 data
-            } = await api.post('/home/product/add-to-wishlist', info)
+            } = await Api.post('/home/product/add-to-wishlist', info)
             console.log(data)
             return fulfillWithValue(data)
         } catch (error) {
@@ -118,7 +118,7 @@ export const get_wishlist_products = createAsyncThunk(
         try {
             const {
                 data
-            } = await api.get(`/home/product/get-wishlist-products/${userId}`)
+            } = await Api.get(`/home/product/get-wishlist-products/${userId}`)
             return fulfillWithValue(data)
         } catch (error) {
             return rejectWithValue(error.response.data)
@@ -135,7 +135,7 @@ export const remove_wishlist = createAsyncThunk(
         try {
             const {
                 data
-            } = await api.delete(`/home/product/delete-wishlist-product/${wishlistId}`)
+            } = await Api.delete(`/home/product/delete-wishlist-product/${wishlistId}`)
             return fulfillWithValue(data)
         } catch (error) {
             return rejectWithValue(error.response.data)
