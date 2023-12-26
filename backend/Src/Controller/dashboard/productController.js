@@ -70,105 +70,37 @@ class productController {
         })
     }
 
+    //Get product function
+
  products_get= async (req, res) => {
-    const { page, searchValue, parPage } = req.query;
+     const { page, searchValue, parPage } = req.query;
+     const { id } = req;
+    const  skipPage = parseInt(parPage) * (parseInt(page) - 1);
     try {
-      let skipPage = "";
-      if (parPage && page) {
-        skipPage = parseInt(parPage) * (parseInt(page) - 1);
-      }
-      if (searchValue && page && parPage) {
-       const products = await ProductModel.find({
-            $text: { $search: searchValue },
-          })
-          .skip(skipPage)
-          .limit(parPage)
-          .sort({ createdAt: -1 });
+      if (searchValue) {
+          const products = await ProductModel.find({
+              $text: { $search: searchValue },
+              sellerId: id
+          }).skip(skipPage).limit(parPage).sort({ createdAt: -1 });
+          
         const totalProducts = await ProductModel.find({
             $text: { $search: searchValue },
+            sellerId:id
           })
           .countDocuments();
         resposeReturn(res, 200, { totalProducts, products });
-      } else if (searchValue === "" && page && parPage) {
-        const categorys = await categoryModel
-          .find({})
-          .skip(skipPage)
-          .limit(parPage)
-          .sort({ createdAt: -1 });
-        const totalCategory = await categoryModel.find({}).countDocuments();
-        resposeReturn(res, 200, { totalCategory, categorys });
       } else {
-         const products = await ProductModel.find({}).sort({ createdAt: -1 });
-        const totalProducts = await ProductModel.find.find({}).countDocuments();
-        resposeReturn(res, 200, { totalProducts, products });
-      }
+          const products = await ProductModel.find({ sellerId: id }).skip(skipPage).limit(parPage).sort({createdAt: -1})
+          const totalProducts = await ProductModel.find({sellerId: id}).countDocuments();
+          resposeReturn(res, 200, { totalProducts, products });
+      } 
+      
     } catch (error) {
       console.log(error.message);
     }
   };
 
-    product_get = async (req, res) => {
-        const { productId } = req.params;
-        try {
-            const product = await ProductModel.findById(productId)
-             resposeReturn(res, 200, { product })
-        } catch (error) {
-            console.log(error.message)
-        }
-    }
-    product_update = async (req, res) => {
-        let { name, description, discount, price, brand, productId, stock } = req.body;
-        name = name.trim()
-        const slug = name.split(' ').join('-')
-        try {
-            await ProductModel.findByIdAndUpdate(productId, {
-                name, description, discount, price, brand, productId, stock, slug
-            })
-            const product = await ProductModel.findById(productId)
-             resposeReturn(res, 200, { product, message: 'product update success' })
-        } catch (error) {
-             resposeReturn(res, 500, { error: error.message })
-        }
-    }
-    product_image_update = async (req, res) => {
-        const form = formidable({ multiples: true })
-
-        form.parse(req, async (err, field, files) => {
-            const { productId, oldImage } = field;
-            const { newImage } = files
-
-            if (err) {
-                 resposeReturn(res, 404, { error: err.message })
-            } else {
-                try {
-                    cloudinary.config({
-                        cloud_name: process.env.cloud_name,
-                        api_key: process.env.api_key,
-                        api_secret: process.env.api_secret,
-                        secure: true
-                    })
-                    const result = await cloudinary.uploader.upload(newImage.filepath, { folder: 'products' })
-
-                    if (result) {
-                        let { images } = await ProductModel.findById(productId)
-                        const index = images.findIndex(img => img === oldImage)
-                        images[index] = result.url;
-
-                        await productModel.findByIdAndUpdate(productId, {
-                            images
-                        })
-
-                        const product = await ProductModeliiii.findById(productId)
-                        resposeReturn(res, 200, { product, message: 'product image update success' })
-                    } else {
-                         resposeReturn(res, 404, { error: 'image upload failed' })
-                    }
-                } catch (error) {
-                     resposeReturn(res, 404, { error: error.message })
-                }
-            }
-        })
-    }
+    
 }
 
 module.exports = new productController()

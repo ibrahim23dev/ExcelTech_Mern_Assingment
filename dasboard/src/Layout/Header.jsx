@@ -17,11 +17,11 @@ const Header = ({ showSidebar, setShowSidebar }) => {
                     <div className='flex justify-center items-center'>
                         <div className='flex justify-center items-center gap-3'>
                             <div className='flex justify-center items-center flex-col text-end'>
-                                <h2 className='text-sm font-bold'>Mohammad Ibrahim{userInfo.name}</h2>
-                                <span className='text-[14px] w-full font-normal'>Admin{userInfo.role}</span>
+                                <h2 className='text-sm font-bold'>Ibrahim{userInfo.name}</h2>
+                                <span className='text-[14px] w-full font-normal'>{userInfo.role}</span>
                             </div>
                             {
-                                userInfo.role === 'admin' ? <img className='w-[45px] h-[45px] rounded-full overflow-hidden' src="http://localhost:3000/images/admin.jpg" alt="" /> : <img className='w-[45px] h-[45px] rounded-full overflow-hidden' src="http://localhost:3000/images/admin.png" alt=""/>
+                                userInfo.role === 'admin' ? <img className='w-[45px] h-[45px] rounded-full overflow-hidden' src="http://localhost:3000/admin.jpg" alt="" /> : <img className='w-[45px] h-[45px] rounded-full overflow-hidden' src="http://localhost:3000/seller.jpg" alt="" />
                             }
                         </div>
                     </div>

@@ -9,13 +9,13 @@ require('dotenv').config();
 const { dbConnect } = require('./Src/utils/db');
 
 const app =new express();
-//const server = http.createServer(app);
-// const io = socket(server, {
-//     cors: {
-//         origin: ['http://localhost:3000', 'http://localhost:3001'],
-//         credentials: true
-//     }
-// });
+const server = http.createServer(app);
+ //const io = socket(server, {
+     //cors: {
+       //  origin: ['http://localhost:3000', 'http://localhost:3001'],
+        // credentials: true
+     //}
+ //});
 
 app.use(cors({
     origin: ['http://localhost:3000','http://localhost:3001'],
@@ -25,68 +25,30 @@ app.use(cors({
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-// Socket related functions
-//let allCustomer = [];
-//let allSeller = [];
-//let admin = {};
+ //Socket related functions
 
-// const addUser = (customerId, socketId, userInfo) => {
-//     const checkUser = allCustomer.some(u => u.customerId === customerId);
-//     if (!checkUser) {
-//         allCustomer.push({ customerId, socketId, userInfo });
-//     }
-// };
-
-// const addSeller = (sellerId, socketId, userInfo) => {
-//     const checkSeller = allSeller.some(u => u.sellerId === sellerId);
-//     if (!checkSeller) {
-//         allSeller.push({ sellerId, socketId, userInfo });
-//     }
-// };
-
-// const findCustomer = (customerId) => allCustomer.find(c => c.customerId === customerId);
-// const findSeller = (sellerId) => allSeller.find(c => c.sellerId === sellerId);
-
-// const remove = (socketId) => {
-//     allCustomer = allCustomer.filter(c => c.socketId !== socketId);
-//     allSeller = allSeller.filter(c => c.socketId !== socketId);
-// };
-
-// const removeAdmin = (socketId) => {
-//     if (admin.socketId === socketId) {
-//         admin = {};
-//     }
-// };
-
-// // Socket.io event handling
-// io.on('connection', (socket) => {
-//     console.log('Socket server is connected...');
-
-//     socket.on('add_user', (customerId, userInfo) => {
-//         addUser(customerId, socket.id, userInfo);
-//         io.emit('activeSeller', allSeller);
-//         io.emit('activeCustomer', allCustomer);
-//     });
-
-//     // ... (other socket events)
+ 
+  //Socket.io event handling
+ 
+//      ... (other socket events)
 
 //    socket.on('disconnect', () => {
-//         console.log('User disconnect');
-//          remove(socket.id);
-//          removeAdmin(socket.id);
-//        io.emit('activeAdmin', { status: false });
-//          io.emit('activeSeller', allSeller);
-//          io.emit('activeCustomer', allCustomer);
-//      });
-//  });
+//          console.log('User disconnect');
+//           remove(socket.id);
+//           removeAdmin(socket.id);
+//         io.emit('activeAdmin', { status: false });
+//           io.emit('activeSeller', allSeller);
+//           io.emit('activeCustomer', allCustomer);
+//       });
+//   });
 
 // Express routes
-app.use('/api', require('./Src/router/chatRoutes'));
+//app.use('/api', require('./Src/router/chatRoutes'));
 //app.use('/api', require('./Src/router/paymentRoutes'))
 app.use('/api', require('./Src/router/dashbord/dashboardIndexRoutes'));
-//app.use('/api/home', require('./Src/router/home/homeRoutes'))
+app.use('/api/home', require('./Src/router/home/homeRoutes'))
 //app.use('/api', require('./Src/router/order/orderRoutes'))
-//app.use('/api', require('./Src/router/home/cardRoutes'));
+app.use('/api', require('./Src/router/home/cardRoutes'));
 app.use('/api', require('./Src/router/authRouter'));
 app.use('/api', require('./Src/router/home/customerAuthRoutes'));
 app.use('/api', require('./Src/router/dashbord/sellerRoutes'));
