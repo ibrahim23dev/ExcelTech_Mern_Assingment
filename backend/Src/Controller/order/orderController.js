@@ -125,7 +125,7 @@ class orderController {
                 customerId: new ObjectId(userId),
                 delivery_status: 'cancelled'
             }).countDocuments()
-            responseReturn(res, 200, {
+            resposeReturn(res, 200, {
                 recentOrders,
                 pendingOrder,
                 cancelledOrder,
@@ -154,7 +154,7 @@ class orderController {
                     customerId: new ObjectId(customerId)
                 })
             }
-            resposeReturn(res, 200, {
+           resposeReturn(res, 200, {
                 orders
             })
         } catch (error) {
@@ -278,7 +278,7 @@ class orderController {
             }
         } catch (error) {
             console.log('get seller order error ' + error.message)
-            resposeReturn(res, 500, { message: 'internal server error' })
+           resposeReturn(res, 500, { message: 'internal server error' })
         }
     }
 

@@ -12,9 +12,9 @@ const app =new express();
 const server = http.createServer(app);
  //const io = socket(server, {
      //cors: {
-       //  origin: ['http://localhost:3000', 'http://localhost:3001'],
-        // credentials: true
-     //}
+         //origin: ['http://localhost:3000', 'http://localhost:3001'],
+         //credentials: true
+    // }
  //});
 
 app.use(cors({
@@ -47,7 +47,7 @@ app.use(cookieParser());
 //app.use('/api', require('./Src/router/paymentRoutes'))
 app.use('/api', require('./Src/router/dashbord/dashboardIndexRoutes'));
 app.use('/api/home', require('./Src/router/home/homeRoutes'))
-//app.use('/api', require('./Src/router/order/orderRoutes'))
+app.use('/api', require('./Src/router/order/orderRoutes'))
 app.use('/api', require('./Src/router/home/cardRoutes'));
 app.use('/api', require('./Src/router/authRouter'));
 app.use('/api', require('./Src/router/home/customerAuthRoutes'));

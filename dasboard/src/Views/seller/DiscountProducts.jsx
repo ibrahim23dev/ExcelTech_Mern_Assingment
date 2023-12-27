@@ -3,7 +3,6 @@ import { FaEdit, FaEye, FaTrash } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import Pagination from '../Pagenation'
 import Search from '../components/Search'
-
 const DiscountProducts = () => {
     const [currentPage, setCurrentPage] = useState(1)
     const [searchValue, setSearchValue] = useState('')
@@ -35,16 +34,16 @@ const DiscountProducts = () => {
                                         <img className='w-[45px] h-[45px]' src={`http://localhost:3000/images/category/${d}.jpg`} alt="" />
                                     </td>
                                     <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>
-                                        <span>Men's Premium soft..</span>
+                                        <span>Men's hand Watch</span>
                                     </td>
                                     <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>
-                                        <span>Sports</span>
+                                        <span>Clock</span>
                                     </td>
                                     <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>
-                                        <span>Easy</span>
+                                        <span>CASIO</span>
                                     </td>
                                     <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>
-                                        <span>$565</span>
+                                        <span>$65</span>
                                     </td>
                                     <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>
                                         <span>5%</span>
