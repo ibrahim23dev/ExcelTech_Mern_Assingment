@@ -18,7 +18,7 @@ const server = http.createServer(app);
  //});
 
 app.use(cors({
-    origin: ['http://localhost:3000','http://localhost:3001'],
+    origin: ['http://localhost:3000'],
     credentials: true
 }));
 
@@ -46,14 +46,14 @@ app.use(cookieParser());
 //app.use('/api', require('./Src/router/chatRoutes'));
 //app.use('/api', require('./Src/router/paymentRoutes'))
 app.use('/api', require('./Src/router/dashbord/dashboardIndexRoutes'));
-app.use('/api/home', require('./Src/router/home/homeRoutes'))
-app.use('/api', require('./Src/router/order/orderRoutes'))
-app.use('/api', require('./Src/router/home/cardRoutes'));
+//app.use('/api/home', require('./Src/router/home/homeRoutes'))
+
+
 app.use('/api', require('./Src/router/authRouter'));
-app.use('/api', require('./Src/router/home/customerAuthRoutes'));
-app.use('/api', require('./Src/router/dashbord/sellerRoutes'));
-app.use('/api', require('./Src/router/dashbord/categoryRoutes'));
-app.use('/api', require('./Src/router/dashbord/productRoutes'))
+//app.use('/api', require('./Src/router/home/customerAuthRoutes'));
+app.use('/api', require('./Src/router/dashbord/SupervisorRouter'));
+app.use('/api', require('./Src/router/dashbord/ShiftRouter'));
+app.use('/api', require('./Src/router/dashbord/employeeRouter'))
 
 // Server setup
 const port = process.env.PORT || 5000;

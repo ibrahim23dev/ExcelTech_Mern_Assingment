@@ -11,7 +11,7 @@ import {
   messageClear,
   profile_info_add,
 } from "../../store/Reducers/authReducer";
-import { create_stripe_connect_account } from "../../store/Reducers/sellerReducer";
+import { create_stripe_connect_account } from "../../store/Reducers/SupervisorReducer";
 const Profile = () => {
   const [state, setState] = useState({
     division: "",

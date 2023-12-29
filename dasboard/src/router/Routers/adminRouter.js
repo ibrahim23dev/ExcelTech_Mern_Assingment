@@ -1,16 +1,11 @@
 import  React,{lazy} from "react";
 
-const AdminDasbord = lazy(() => import('../../Views/admin/adminDasbord'));
-const Order = lazy(() => import('../../Views/admin/Order'));
-const Category = lazy(() => import('../../Views/admin/Category'));
-const SellerRequest = lazy(() => import('../../Views/admin/SellerRequest'));
+const AdminDasbord = lazy(() => import('../../Views/admin/AdminDasboard'));
+const AddSupervisor = lazy(() => import('../../Views/admin/AddSupervisor'));
+const SuperviserRequest = lazy(() => import('../../Views/admin/SuperviserRequest'));
 const Logout = lazy(() => import('../../Views/admin/logout'));
-const Seller = lazy(() => import('../../Views/admin/Sellers'));
-const DeactiveSeller = lazy(() => import('../../Views/admin/DeactiveSeller'));
-const SellerChart = lazy(() => import('../../Views/admin/ChartSeller'));
-const PaymentRequest = lazy(() => import('../../Views/admin/paymentRequest'));
-const SellerDetails = lazy(() => import('../../Views/admin/SellerDetails'));
-const BuyerDetails =lazy(() => import('../../Views/admin/buyerDetails'));
+const SupervisorDetails = lazy(() => import('../../Views/admin/SupervisorDetails'));
+const EmployeeDetails =lazy(() => import('../../Views/admin/EmployeeDetails'));
 
 export const adminRoute = [
     {
@@ -18,42 +13,19 @@ export const adminRoute = [
         element: <AdminDasbord />,
         ability: 'admin'
     },
-    {
-        path: '/admin/dashboard/orders',
-        element: <Order />,
-        ability: 'admin'
-    },
+    
     {
         path: '/admin/dashboard/category',
-        element: <Category />,
+        element: <AddSupervisor />,
         ability: 'admin'
     },
-    {
-        path: '/admin/dashboard/activeseller',
-        element: <Seller />,
-        ability: 'admin'
-    },
-    {
-        path: '/admin/dashboard/deactivateseller',
-        element: <DeactiveSeller />,
-        ability: 'admin'
-    },
+    
     {
         path: '/admin/dashboard/sellerrequest',
-        element: <SellerRequest />,
-        ability: 'admin'
-    },
-    {
-        path: '/admin/dashboard/paymentrequest',
-        element: <PaymentRequest />,
+        element: <SuperviserRequest />,
         ability: 'admin'
     },
      
-    {
-        path: '/admin/dashboard/chatseller',
-        element: <SellerChart />,
-        ability: 'admin'
-    },
     {
         path: '/admin/dashboard/logout',
         element: <Logout />,
@@ -61,12 +33,12 @@ export const adminRoute = [
     },
     {
         path: '/admin/dashboard/sellerDetails',
-        element: <SellerDetails />,
+        element: <SupervisorDetails />,
         ability: 'admin'
     },
     {
         path: '/admin/dashboard/BuyerDetails',
-        element: <BuyerDetails />,
+        element: <EmployeeDetails />,
         ability: 'admin'
     }
 ];

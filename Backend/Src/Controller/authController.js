@@ -1,5 +1,5 @@
-const Adminmodel = require('../models/adminModel');
-const SellerModel = require('../models/sellerModel');
+const Adminmodel = require('../models/AdminModel');
+const SellerModel = require('../models/SupervisorModel');
 const Bcrypt = require('bcrypt');
 const { resposeReturn } = require('../utils/response');
 const {CreateToken} = require('../utils/CreateToken');

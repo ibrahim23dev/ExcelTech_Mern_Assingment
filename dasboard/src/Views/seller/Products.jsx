@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import Pagination from '../Pagenation'
 import Search from '../components/Search'
-import { get_products } from '../../store/Reducers/productReducer'
+import { get_products } from '../../store/Reducers/EmplyeeReducer'
 const Products = () => {
     const dispatch = useDispatch()
     const { products, totalProduct } = useSelector(state => state.product) || {};
@@ -32,12 +32,11 @@ const Products = () => {
                             <tr>
                                 <th scope='col' className='py-3 px-4'>No</th>
                                 <th scope='col' className='py-3 px-4'>Image</th>
-                                <th scope='col' className='py-3 px-4'>Name</th>
-                                <th scope='col' className='py-3 px-4'>Category</th>
-                                <th scope='col' className='py-3 px-4'>Brand</th>
-                                <th scope='col' className='py-3 px-4'>Price</th>
-                                <th scope='col' className='py-3 px-4'>Discount</th>
-                                <th scope='col' className='py-3 px-4'>Stock</th>
+                                <th scope='col' className='py-3 px-4'>Employee Name</th>
+                                <th scope='col' className='py-3 px-4'>Shift</th>
+                                <th scope='col' className='py-3 px-4'>Designation</th>
+                                <th scope='col' className='py-3 px-4'>Salary</th>
+                                <th scope='col' className='py-3 px-4'>Date</th>
                                 <th scope='col' className='py-3 px-4'>Action</th>
                             </tr>
                         </thead>
@@ -60,11 +59,7 @@ const Products = () => {
                                     <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>
                                         <span>${d.price}</span>
                                     </td>
-                                    <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>
-                                        {
-                                            d.discount === 0 ? <span>no discount</span> : <span>${d.discount}%</span>
-                                        }
-                                    </td>
+                                    
                                     <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>
                                         <span>{d.stock}</span>
                                     </td>

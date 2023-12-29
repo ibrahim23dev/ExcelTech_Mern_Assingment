@@ -1,20 +1,17 @@
-const authorOrder = require('../../models/authOrder')
-const customerOrder = require('../../models/customerOrder')
-const sellerWallet = require('../../models/sellerWallet')
-const myShopWallet = require('../../models/myShopWallet')
-const sellerModel = require('../../models/sellerModel')
-const adminSellerMessage = require('../../models/chat/adminSellerMessage')
-const sellerCustomerMessage = require('../../models/chat/sellerCustomerMessage')
-const productModel = require('../../models/productModel')
+//const authorOrder = require('../../models/authOrder')
+//const customerOrder = require('../../models/customerOrder')
+//const SupervisorWallet = require('../../models/SupervisorWallet')
+const SupervisorModel = require('../../models/SupervisorModel')
+const EmployeeModel = require('../../models/AddEmployeeModel')
 
-const { mongo: { ObjectId } } = require('mongoose')
+//const { mongo: { ObjectId } } = require('mongoose')
 const { resposeReturn } = require('../../utils/response')
 
-module.exports.get_seller_dashboard_data = async (req, res) => {
+{/*module.exports.get_seller_dashboard_data = async (req, res) => {
     const { id } = req;
 
     try {
-        const totalSele = await sellerWallet.aggregate([
+        const totalSupervisor = await SupervisorWallet.aggregate([
             {
                 $match: {
                     sellerId: {
@@ -37,21 +34,7 @@ module.exports.get_seller_dashboard_data = async (req, res) => {
             sellerId: new ObjectId(id)
         }).countDocuments()
 
-        const totalPendingOrder = await authorOrder.find({
-            $and: [
-                {
-                    sellerId: {
-                        $eq: new ObjectId(id)
-                    }
-                },
-                {
-                    delivery_status: {
-                        $eq: 'pending'
-                    }
-                }
-            ]
-        }).countDocuments()
-
+     
         const messages = await sellerCustomerMessage.find({
             $or: [
                 {
@@ -82,38 +65,18 @@ module.exports.get_seller_dashboard_data = async (req, res) => {
     } catch (error) {
         console.log('get seller dashboard data error ' + error.messages)
     }
-}
+}*/}
+
 
 module.exports.get_admin_dashboard_data = async (req, res) => {
     const { id } = req
     try {
-        const totalSele = await myShopWallet.aggregate([
-            {
-                $group: {
-                    _id: null,
-                    totalAmount: { $sum: '$amount' }
-                }
-            }
-        ])
+        const totalemployee = await EmployeeModel.find({}).countDocuments()
+        const totalSupervisor = await SupervisorModel.find({}).countDocuments()
 
-
-        const totalProduct = await productModel.find({}).countDocuments()
-
-        const totalOrder = await customerOrder.find({}).countDocuments()
-
-        const totalSeller = await sellerModel.find({}).countDocuments()
-
-        const messages = await adminSellerMessage.find({}).limit(3)
-
-        const recentOrders = await customerOrder.find({}).limit(5)
-
-        resposeReturn(res, 200, {
-            totalOrder,
-            totalSale: totalSele.length > 0 ? totalSele[0].totalAmount : 0,
-            totalSeller,
-            messages,
-            recentOrders,
-            totalProduct
+         resposeReturn(res, 200, {
+            totalSupervisor,
+            totalemployee
         })
 
     } catch (error) {
