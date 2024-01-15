@@ -1,8 +1,8 @@
 import { lazy } from 'react'
 const SellerDashboard = lazy(() => import("../../Views/seller/SellerDashboard"))
-const AddProduct = lazy(() => import("../../Views/seller/AddProduct"))
+const AddProduct = lazy(() => import("../../Views/seller/addProduct"))
 const Products = lazy(() => import("../../Views/seller/Products"))
-const Profile = lazy(() => import("../../Views/seller/Profile"))
+const Profile = lazy(() => import("../../Views/seller/profile"))
 const Pending = lazy(() => import("../../Views/Pending"))
 const Deactive = lazy(() => import("../../Views/Deactive"))
 const EditProduct = lazy(() => import('../../Views/seller/EditProduct'));
