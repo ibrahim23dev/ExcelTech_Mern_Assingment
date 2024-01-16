@@ -58,7 +58,7 @@ const Header = () => {
           <div className="row">
             <div className="col-12">
               <div>
-                <ul className="flex flex-wrap justify-center gap-8">
+                <ul className="flex flex-wrap justify-center gap-8 font-serif">
                   <li>
                     <Link to="/">Home</Link>
                   </li>
