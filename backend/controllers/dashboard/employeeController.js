@@ -1,14 +1,14 @@
 const formidable = require('formidable')
 const cloudinary = require('cloudinary').v2
-const productModel = require('../../models/productModel');
+const employeeModel = require('../../models/employeeModel');
 const { responseReturn } = require('../../utiles/response');
-class productController {
-    add_product = async (req, res) => {
+class employeeController {
+    add_employee = async (req, res) => {
         const { id } = req;
         const form = formidable({ multiples: true })
 
         form.parse(req, async (err, field, files) => {
-            let { name, category, description, stock, price, discount, shopName, brand } = field;
+            let { name, email,department, date, salary, designation} = field;
             const { images } = files;
             name = name.trim()
             const slug = name.split(' ').join('-')
@@ -28,18 +28,16 @@ class productController {
                     allImageUrl = [...allImageUrl, result.url]
                 }
 
-                await productModel.create({
+                await employeeModel.create({
                     sellerId: id,
                     name,
                     slug,
-                    shopName,
-                    category: category.trim(),
-                    description: description.trim(),
-                    stock: parseInt(stock),
-                    price: parseInt(price),
-                    discount: parseInt(discount),
+                    email,
+                    department: department.trim(),
+                    salary: salary.trim(),
+                    designation: parseInt(designation),
                     images: allImageUrl,
-                    brand: brand.trim()
+                    date:date.trim()
 
                 })
                 responseReturn(res, 201, { message: "product add success" })
@@ -49,7 +47,8 @@ class productController {
 
         })
     }
-    products_get = async (req, res) => {
+
+    employee_get = async (req, res) => {
         const { page, searchValue, parPage } = req.query
         const { id } = req;
 
@@ -57,26 +56,26 @@ class productController {
 
         try {
             if (searchValue) {
-                const products = await productModel.find({
+                const employees = await employeeModel.find({
                     $text: { $search: searchValue },
                     sellerId: id
                 }).skip(skipPage).limit(parPage).sort({ createdAt: -1 })
-                const totalProduct = await productModel.find({
+                const totalemployee = await productModel.find({
                     $text: { $search: searchValue },
                     sellerId: id
                 }).countDocuments()
-                responseReturn(res, 200, { totalProduct, products })
+               responseReturn(res, 200, { totalemployee, employees })
             } else {
-                const products = await productModel.find({ sellerId: id }).skip(skipPage).limit(parPage).sort({ createdAt: -1 })
-                const totalProduct = await productModel.find({ sellerId: id }).countDocuments()
-                responseReturn(res, 200, { totalProduct, products })
+                const employees = await employeeModel.find({ sellerId: id }).skip(skipPage).limit(parPage).sort({ createdAt: -1 })
+                const totalemployee = await employeeModel.find({ sellerId: id }).countDocuments()
+                responseReturn(res, 200, { totalemployee,employees})
             }
         } catch (error) {
             console.log(error.message)
         }
     }
 
-    product_get = async (req, res) => {
+    employee_get = async (req, res) => {
         const { productId } = req.params;
         try {
             const product = await productModel.findById(productId)
@@ -85,6 +84,7 @@ class productController {
             console.log(error.message)
         }
     }
+    
     product_update = async (req, res) => {
         let { name, description, discount, price, brand, productId, stock } = req.body;
         name = name.trim()
@@ -99,6 +99,7 @@ class productController {
             responseReturn(res, 500, { error: error.message })
         }
     }
+    
     product_image_update = async (req, res) => {
         const form = formidable({ multiples: true })
 
@@ -140,4 +141,4 @@ class productController {
     }
 }
 
-module.exports = new productController()
+module.exports = new employeeController()

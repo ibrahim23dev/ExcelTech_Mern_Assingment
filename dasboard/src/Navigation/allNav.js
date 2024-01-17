@@ -4,6 +4,9 @@ import { BiCategory, BiLoaderCircle } from 'react-icons/bi';
 import { CgProfile } from 'react-icons/cg'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { GrUserWorker } from "react-icons/gr";
+import { TbFileReport } from "react-icons/tb";
+import { RiVipCrown2Fill } from "react-icons/ri";
+import { FaTrafficLight } from "react-icons/fa";
 
 // Define your navigation data
 export const allNav = [
@@ -62,6 +65,27 @@ export const allNav = [
 
     {
         id: 8,
+        title: 'Daily Report',
+        icon: <TbFileReport />,
+        role: 'seller',
+        path: '/seller/dashboard/report'
+  },
+    {
+        id: 9,
+        title: 'VIP Pass',
+        icon: <RiVipCrown2Fill />,
+        role: 'seller',
+        path: '/seller/dashboard/vip'
+  },
+    {
+        id: 10,
+        title: 'Regular Traffic Details',
+        icon: <FaTrafficLight />,
+        role: 'seller',
+        path: '/seller/dashboard/traffic'
+  },
+    {
+        id: 11,
         title: 'Profile',
         icon: <CgProfile />,
         role: 'seller',

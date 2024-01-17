@@ -4,7 +4,7 @@ import { getNavs } from '../Navigation/index'
 import { logout } from '../store/Reducers/authReducer'
 import { BiLogInCircle } from 'react-icons/bi'
 import { useDispatch,useSelector } from 'react-redux'
-import logo from '../assets/images/logo1.png'
+
 
 const SideBar = ({ showSidebar, setShowSidebar }) => {
 
@@ -25,7 +25,7 @@ const SideBar = ({ showSidebar, setShowSidebar }) => {
       <div className={`w-[260px] fixed bg-[#283046] z-50 top-0 h-screen shadow-[0_0_15px_0_rgb(34_41_47_/_5%)] transition-all ${showSidebar ? 'left-0' : '-left-[260px] lg:left-0'}`}>
         <div className='h-[70px] flex justify-center items-center'>
           <Link to='/' className='w-[180px] h-[50px]'>
-            <img className='w-full h-full' src={logo} alt="" />
+            <img className='w-full h-full' src="http://localhost:3000/rit.png" alt="" />
           </Link>
         </div>
         <div className='px-[16px]'>

@@ -6,7 +6,11 @@ const Profile = lazy(() => import("../../Views/seller/profile"))
 const Pending = lazy(() => import("../../Views/Pending"))
 const Deactive = lazy(() => import("../../Views/Deactive"))
 const EditProduct = lazy(() => import('../../Views/seller/EditProduct'));
-export const sellerRoutes = [
+const Report = lazy(() => import('../../Views/seller/report'));
+const Vip = lazy(() => import('../../Views/seller/vip'));
+const Traffic = lazy(() => import('../../Views/seller/traffic'));
+
+export const employeeRoutes = [
 
     {
         path: '/seller/account-pending',
@@ -41,6 +45,24 @@ export const sellerRoutes = [
     {
         path: '/seller/dashboard/products',
         element: <Products/>,
+        role: 'seller',
+        status: 'active'
+    },
+    {
+        path: '/seller/dashboard/report',
+        element: <Report/>,
+        role: 'seller',
+        status: 'active'
+    },
+    {
+        path: '/seller/dashboard/vip',
+        element: <Vip/>,
+        role: 'seller',
+        status: 'active'
+    },
+    {
+        path: '/seller/dashboard/traffic',
+        element: <Traffic/>,
         role: 'seller',
         status: 'active'
     },

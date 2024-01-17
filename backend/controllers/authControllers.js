@@ -105,7 +105,7 @@ class authControllers {
 
     profile_image_upload = async (req, res) => {
         const { id } = req
-        const form = formidable({ multiples: true })
+        const form =new formidable.IncomingForm();
         form.parse(req, async (err, _, files) => {
             cloudinary.config({
                 cloud_name: process.env.cloud_name,
