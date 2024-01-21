@@ -1,19 +1,22 @@
 const { Schema, model } = require('mongoose')
 
-const stripeSchema = new Schema({
-    sellerId: {
-        type: Schema.ObjectId,
-        required: true
-    },
-    stripeId: {
+const supervisorSchema = new Schema({
+    name: {
         type: String,
         required: true
     },
-    code: {
+    image: {
+        type: String,
+        required: true
+    },
+    slug: {
         type: String,
         required: true
     }
 }, { timestamps: true })
 
+supervisorSchema.index({
+    name: 'text'
+})
 
-module.exports = model('stripes', stripeSchema)
+module.exports = model('supervisor', supervisorSchema);

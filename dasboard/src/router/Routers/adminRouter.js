@@ -1,5 +1,4 @@
 import  React,{lazy} from "react";
-
 const AdminDasbord = lazy(() => import('../../Views/admin/AdminDasboard'));
 const AddSupervisor = lazy(() => import('../../Views/admin/AddSupervisor'));
 const SuperviserRequest = lazy(() => import('../../Views/admin/SuperviserRequest'));

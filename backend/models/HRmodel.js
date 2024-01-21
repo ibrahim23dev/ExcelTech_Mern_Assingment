@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose')
 
-const sellerSchema = new Schema({
+const HrSchema = new Schema({
     name: {
         type: String,
         required: true
@@ -41,7 +41,7 @@ const sellerSchema = new Schema({
 }, { timestamps: true })
 
 
-sellerSchema.index({
+HrSchema.index({
     name: 'text',
     email: 'text'
 }, {
@@ -51,4 +51,4 @@ sellerSchema.index({
     }
 })
 
-module.exports = model('sellers', sellerSchema)
+module.exports = model('hr', HrSchema);

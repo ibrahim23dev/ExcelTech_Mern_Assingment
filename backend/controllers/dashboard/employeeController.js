@@ -13,6 +13,7 @@ class employeeController {
             name = name.trim()
             const slug = name.split(' ').join('-')
 
+            
             cloudinary.config({
                 cloud_name: process.env.cloud_name,
                 api_key: process.env.api_key,
@@ -99,7 +100,7 @@ class employeeController {
             responseReturn(res, 500, { error: error.message })
         }
     }
-    
+
     product_image_update = async (req, res) => {
         const form = formidable({ multiples: true })
 

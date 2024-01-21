@@ -1,11 +1,11 @@
-const categoryModel = require('../../models/categoryModel')
-const { responseReturn } = require('../../utiles/response')
+const SuperviserModel = require('../../models/superviserModel');
+const { responseReturn } = require('../../utiles/response');
 const cloudinary = require('cloudinary').v2
 const formidable = require('formidable')
 
 class categoryController {
 
-   add_category = async (req, res) => {
+   add_department = async (req, res) => {
     const form = new formidable.IncomingForm();
     form.parse(req, async (err, fields, files) => {
       if (err) {
@@ -38,7 +38,7 @@ class categoryController {
           });
 
           if (result) {
-            const Add = await categoryModel.create({
+            const Add = await SuperviserModel.create({
               name,
               slug,
               image: result.url
@@ -60,7 +60,7 @@ class categoryController {
     });
   };
 
-   get_category = async (req, res) => {
+   get_department = async (req, res) => {
     const { page, searchValue, parPage } = req.query;
     try {
       let skipPage = "";
@@ -68,31 +68,28 @@ class categoryController {
         skipPage = parseInt(parPage) * (parseInt(page) - 1);
       }
       if (searchValue && page && parPage) {
-        const categorys = await categoryModel
-          .find({
+        const supervisor = await SuperviserModel.find({
             $text: { $search: searchValue },
           })
           .skip(skipPage)
           .limit(parPage)
           .sort({ createdAt: -1 });
-        const totalCategory = await categoryModel
-          .find({
+        const totalsupervisor = await SuperviserModel.find({
             $text: { $search: searchValue },
           })
           .countDocuments();
-        responseReturn(res, 200, { totalCategory, categorys });
+        responseReturn(res, 200, { totalsupervisor, supervisor });
       } else if (searchValue === "" && page && parPage) {
-        const categorys = await categoryModel
-          .find({})
+        const supervisor = await SuperviserModel.find({})
           .skip(skipPage)
           .limit(parPage)
           .sort({ createdAt: -1 });
-        const totalCategory = await categoryModel.find({}).countDocuments();
-        responseReturn(res, 200, { totalCategory, categorys });
+        const totalsupervisor = await SuperviserModel.find({}).countDocuments();
+        responseReturn(res, 200, { totalsupervisor, supervisor });
       } else {
-        const categorys = await categoryModel.find({}).sort({ createdAt: -1 });
-        const totalCategory = await categoryModel.find({}).countDocuments();
-        responseReturn(res, 200, { totalCategory, categorys });
+        const supervisor = await SuperviserModel.find({}).sort({ createdAt: -1 });
+        const totalsupervisor = await categoryModel.find({}).countDocuments();
+        responseReturn(res, 200, { totalsupervisor, supervisor});
       }
     } catch (error) {
       console.log(error.message);
