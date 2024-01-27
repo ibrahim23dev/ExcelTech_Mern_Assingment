@@ -1,9 +1,9 @@
-const sellerModel = require('../../models/sellerModel')
+const HrModel = require('../../models/HRmodel')
 const { responseReturn } = require('../../utiles/response')
 
-class sellerController {
+class HrController {
     
-    get_seller_request = async (req, res) => {
+    get_hr_request = async (req, res) => {
         const { page, searchValue, parPage } = req.query
         const skipPage = parseInt(parPage) * (parseInt(page) - 1)
         try {

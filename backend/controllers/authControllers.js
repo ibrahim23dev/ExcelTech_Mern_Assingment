@@ -1,6 +1,6 @@
 const adminModel = require('../models/adminModel')
-const sellerModel = require('../models/sellerModel')
-const sellerCustomerModel = require('../models/chat/sellerCustomerModel')
+const supervisorModel = require('../models/SupervisorModel')
+const supervisorUserModel = require('../models/chat/SupervisorUserModel')
 const bcrpty = require('bcrypt')
 const formidable = require('formidable')
 const cloudinary = require('cloudinary').v2
@@ -36,7 +36,7 @@ class authControllers {
     seller_login = async (req, res) => {
         const { email, password } = req.body
         try {
-            const seller = await sellerModel.findOne({ email }).select('+password')
+            const seller = await supervisorModel.findOne({ email }).select('+password')
             if (seller) {
                 const match = await bcrpty.compare(password, seller.password)
                 if (match) {
@@ -62,18 +62,18 @@ class authControllers {
     seller_register = async (req, res) => {
         const { email, name, password } = req.body
         try {
-            const getUser = await sellerModel.findOne({ email })
+            const getUser = await supervisorModel.findOne({ email })
             if (getUser) {
                 responseReturn(res, 404, { error: 'Email alrady exit' })
             } else {
-                const seller = await sellerModel.create({
+                const seller = await supervisorModel.create({
                     name,
                     email,
                     password: await bcrpty.hash(password, 10),
                     method: 'menualy',
                     shopInfo: {}
                 })
-                await sellerCustomerModel.create({
+                await supervisorUserModel.create({
                     myId: seller.id
                 })
                 const token = await createToken({ id: seller.id, role: seller.role })
@@ -95,7 +95,7 @@ class authControllers {
                 const user = await adminModel.findById(id)
                 responseReturn(res, 200, { userInfo: user })
             } else {
-                const seller = await sellerModel.findById(id)
+                const seller = await supervisorModel.findById(id)
                 responseReturn(res, 200, { userInfo: seller })
             }
         } catch (error) {
@@ -105,7 +105,7 @@ class authControllers {
 
     profile_image_upload = async (req, res) => {
         const { id } = req
-        const form =new formidable.IncomingForm();
+        const form = formidable({ multiples: true })
         form.parse(req, async (err, _, files) => {
             cloudinary.config({
                 cloud_name: process.env.cloud_name,
@@ -117,10 +117,10 @@ class authControllers {
             try {
                 const result = await cloudinary.uploader.upload(image.filepath, { folder: 'profile' })
                 if (result) {
-                    await sellerModel.findByIdAndUpdate(id, {
+                    await supervisorModel.findByIdAndUpdate(id, {
                         image: result.url
                     })
-                    const userInfo = await sellerModel.findById(id)
+                    const userInfo = await supervisorModel.findById(id)
                     responseReturn(res, 201, { message: 'image upload success', userInfo })
                 } else {
                     responseReturn(res, 404, { error: 'image upload failed' })
@@ -137,7 +137,7 @@ class authControllers {
         const { id } = req;
 
         try {
-            await sellerModel.findByIdAndUpdate(id, {
+            await supervisorModel.findByIdAndUpdate(id, {
                 shopInfo: {
                     shopName,
                     division,
@@ -145,7 +145,7 @@ class authControllers {
                     sub_district
                 }
             })
-            const userInfo = await sellerModel.findById(id)
+            const userInfo = await supervisorModel.findById(id)
             responseReturn(res, 201, { message: 'Profile info add success', userInfo })
         } catch (error) {
             responseReturn(res, 500, { error: error.message })

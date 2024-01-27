@@ -1,7 +1,7 @@
-const authorOrder = require('../../models/authOrder')
-const customerOrder = require('../../models/customerOrder')
-const sellerWallet = require('../../models/sellerWallet')
-const myShopWallet = require('../../models/myShopWallet')
+//const authorOrder = require('../../models/authOrder')
+//const customerOrder = require('../../models/customerOrder')
+//const sellerWallet = require('../../models/sellerWallet')
+//const myShopWallet = require('../../models/myShopWallet')
 const sellerModel = require('../../models/sellerModel')
 
 const adminSellerMessage = require('../../models/chat/adminSellerMessage')

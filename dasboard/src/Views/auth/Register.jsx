@@ -40,11 +40,16 @@ const Register = () => {
         }
     }, [successMessage, errorMessage])
     return (
-        <div className='min-w-screen min-h-screen bg-[#161d31] flex justify-center items-center'>
-            <div className='w-[350px] text-[#d0d2d6] p-2'>
-                <div className='bg-[#283046] p-4 rounded-md'>
-                    <h2 className='text-xl mb-3'>Welcome to e-commerce</h2>
-                    <p className='text-sm mb-3'>Please register to your account and start your bussiness</p>
+        <div className='bg-gradient-to-r from-violet-500 to-fuchsia-500'>
+            
+            <div className='min-w-screen min-h-screen  flex justify-center items-center'>
+                <div className='w-[350px] text-[#d0d2d6] p-2 pt-5'>
+                    <div className='p-2 pt-20 justify-between'>
+                <h3 className='text-center font-serif font-extrabold'>Regnum Data Center</h3>
+            </div>
+                    <div className='bg-[#472c4e] p-4 rounded-md'>
+                    <h2 className='text-xl mb-3 text-center font-serif font-semibold'>Data Monitoring Teesta</h2>
+                    <p className='text-sm mb-3 text-center font-momo'>Please Register to Your Account</p>
                     <form onSubmit={submit}>
                         <div className='flex flex-col w-full gap-1 mb-3'>
                             <label htmlFor="name">Name</label>
@@ -94,7 +99,9 @@ const Register = () => {
                     </form>
                 </div>
             </div>
-        </div>
+        </div></div>
+        
+        
     )
 }
 

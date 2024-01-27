@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose')
 
-const HrSchema = new Schema({
+const supervisorSchema = new Schema({
     name: {
         type: String,
         required: true
@@ -16,7 +16,7 @@ const HrSchema = new Schema({
     },
     role: {
         type: String,
-        default: 'seller'
+        default: 'supervisor'
     },
     status: {
         type: String,
@@ -33,15 +33,11 @@ const HrSchema = new Schema({
     image: {
         type: String,
         default: ''
-    },
-    shopInfo: {
-        type: Object,
-        default: {}
-    },
+    }
 }, { timestamps: true })
 
 
-HrSchema.index({
+supervisorSchema.index({
     name: 'text',
     email: 'text'
 }, {
@@ -51,4 +47,5 @@ HrSchema.index({
     }
 })
 
-module.exports = model('hr', HrSchema);
+const superviserModel=model('supervisor',supervisorSchema)
+module.exports = superviserModel;

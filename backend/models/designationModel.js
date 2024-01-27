@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose')
+const { Schema, model } = require('mongoose');
 
 const supervisorSchema = new Schema({
     name: {
@@ -18,5 +18,5 @@ const supervisorSchema = new Schema({
 supervisorSchema.index({
     name: 'text'
 })
-
-module.exports = model('supervisor', supervisorSchema);
+const SupervisorModel=model('supervisor',supervisorSchema)
+module.exports = SupervisorModel;

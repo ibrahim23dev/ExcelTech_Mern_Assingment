@@ -10,4 +10,4 @@ router.post('/profile-info-add',authMiddleware, authControllers.profile_info_add
 
 router.get('/logout',authMiddleware,authControllers.logout)
 
-module.exports = router
+module.exports = router;

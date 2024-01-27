@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose')
 
-const sellerCustomerSchema = new Schema({
+const supervisorCustomerSchema = new Schema({
     myId: {
         type: String,
         required: true
@@ -12,4 +12,4 @@ const sellerCustomerSchema = new Schema({
 
 }, { timestamps: true })
 
-module.exports = model('seller_customers', sellerCustomerSchema)
+module.exports = model('supervisor_customers', supervisorCustomerSchema)
