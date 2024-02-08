@@ -2,17 +2,17 @@ import React, { useEffect, useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import Header from './Header'
 import Sidebar from './SideBar'
-import { socket } from '../utils/utils'
+//import { socket } from '../utils/utils'
 import { useSelector,useDispatch } from 'react-redux'
 //import {updateCustomer,updateSellers,activeStatus_update} from '../store/Reducers/chatReducer'
 
 const MainLayout = () => {
 
-  const dispatch = useDispatch()
-  const { userInfo } = useSelector(state => state.auth)
+  //const dispatch = useDispatch()
+  //const { userInfo } = useSelector(state => state.auth)
   const [showSidebar, setShowSidebar] = useState(false)
 
-  {/*useEffect(() => {
+  {/* useEffect(() => {
     if (userInfo && userInfo.role === 'seller') {
       socket.emit('add_seller', userInfo._id, userInfo)
     } else {
@@ -30,8 +30,8 @@ const MainLayout = () => {
     socket.on('activeAdmin',(data)=>{
       dispatch(activeStatus_update(data))
     })
-  }, [])*/}
-  
+  },[])*/}
+
   return (
     <div className='bg-[#161d31] w-full min-h-screen'>
       <Header showSidebar={showSidebar} setShowSidebar={setShowSidebar} />

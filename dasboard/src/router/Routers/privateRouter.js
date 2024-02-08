@@ -1,8 +1,7 @@
-const {adminRoute} = require('./adminRouter');
-const {employeeRoutes} =require('./employeeRouter')
+const {UserRoutes} =require('./UserRouter')
 
 export const privateRoute = [
-    ...adminRoute,
-    ...employeeRoutes
+    
+    ...UserRoutes
     
 ];
