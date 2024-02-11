@@ -1,27 +1,32 @@
-const { Schema, model } = require('mongoose')
+const { model, Schema } = require("mongoose");
 
-const taskSchema = new Schema({
-    
+const DataSchema = Schema(
+  {
     title: {
-        type: String,
-        required: true
+      type: String,
+      require: true
     },
-    email: {
-        type: String,
-        required: true,
-        unique:true
-     },
     description: {
-        type: String,
-        required: true
+      type: String,
+      require: true
     },
     status: {
-        type: String,
-        default: 'New'
+      type: String,
+      default: 'New'
     },
-    createdDate:{type:Date,default:Date.now()}
-},
- { timestamps: true })
+    email: {
+      type: String
+    
+    },
+    
+    createdDate: {
+      type: Date,
+      default: Date.now(),
+    },
+  },
+  { versionKey: false }
+);
 
+const TasksModel = model("alltasks", DataSchema);
 
-module.exports = model('task', taskSchema)
+module.exports = TasksModel;

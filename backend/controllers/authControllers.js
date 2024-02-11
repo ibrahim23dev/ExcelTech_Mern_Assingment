@@ -16,10 +16,10 @@ class authControllers {
                 if (match) {
                     const token = await createToken({
                         id: user.id,
-                        role: user.role
+                        email: user.email
                     });
                     res.cookie('accessToken', token, {
-                        expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000)
+                        expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
                     });
                     responseReturn(res, 200, { token, message: 'Login success' });
                 } else {
@@ -48,7 +48,7 @@ class authControllers {
                     subjectInfo: {}
                 });
                 
-                const token = await createToken({ id: user.id, role: user.role });
+                const token = await createToken({ id: user.id, email: user.email });
                 res.cookie('accessToken', token, {
                     expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
                 });

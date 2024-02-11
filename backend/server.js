@@ -20,7 +20,7 @@ app.use(bodyParser.json())
 app.use(cookieParser())
 //app.use('/api', require('./routes/dashboard/dashboardIndexRoutes'))
 app.use('/api', require('./routes/authRoutes'));
-app.use('/api', require('./routes/TaskRouter/taskRouter'));
+app.use('/api', require('./routes/taskRouter'));
 //app.use('/api', require('./routes/dashboard/categoryRoutes'))
 //app.use('/api', require('./routes/dashboard/productRoutes'))
 const port = process.env.PORT

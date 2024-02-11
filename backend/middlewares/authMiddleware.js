@@ -7,7 +7,7 @@ module.exports.authMiddleware = async (req, res, next) => {
     } else {
         try {
             const deCodeToken = await jwt.verify(accessToken, process.env.SECRET)
-            req.role = deCodeToken.role
+            req.email=deCodeToken.email
             req.id = deCodeToken.id
             next()
         } catch (error) {
@@ -15,3 +15,4 @@ module.exports.authMiddleware = async (req, res, next) => {
         }
     }
 }
+
